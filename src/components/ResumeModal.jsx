@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo, experience, coreCompetencies, certificates, education } from '../data/portfolioData';
-import { X, Printer, Download, Award, Briefcase, GraduationCap, ShieldCheck } from 'lucide-react';
+import { X, Printer, GraduationCap } from 'lucide-react';
 
 export default function ResumeModal({ onClose }) {
   const handlePrint = () => {
@@ -13,7 +13,7 @@ export default function ResumeModal({ onClose }) {
         
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#070b13]">
-          <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
             <GraduationCap className="w-4 h-4" />
             <span>Curriculum Vitae Preview — Smriti Dahal, PSW</span>
           </div>
@@ -21,7 +21,7 @@ export default function ResumeModal({ onClose }) {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition text-xs font-mono flex items-center gap-1.5 cursor-pointer"
+              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition text-xs font-medium flex items-center gap-1.5 cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>
@@ -36,7 +36,7 @@ export default function ResumeModal({ onClose }) {
         </div>
 
         {/* Printable Resume Body */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-slate-200 text-xs font-mono">
+        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-slate-200 text-xs">
           
           {/* Header */}
           <div className="border-b border-slate-800 pb-4 text-center space-y-1">
@@ -70,9 +70,9 @@ export default function ResumeModal({ onClose }) {
             <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Relevant Experience</div>
             {experience.map((exp, idx) => (
               <div key={idx} className="space-y-1 border-l-2 border-slate-800 pl-3">
-                <div className="flex justify-between font-bold text-white">
-                  <span>{exp.role.toUpperCase()} | {exp.facility.toUpperCase()} | {exp.location.toUpperCase()}</span>
-                  <span className="text-emerald-400">{exp.period}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white">
+                  <span>{exp.role} | {exp.facility} | {exp.location}</span>
+                  <span className="text-emerald-400 text-[11px]">{exp.period}</span>
                 </div>
                 <ul className="list-disc list-inside text-slate-300 space-y-0.5 font-sans">
                   {exp.highlights.map((h, hIdx) => (
@@ -88,11 +88,11 @@ export default function ResumeModal({ onClose }) {
             <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Education</div>
             {education.map((edu, idx) => (
               <div key={idx} className="space-y-0.5 border-l-2 border-slate-800 pl-3">
-                <div className="flex justify-between font-bold text-white">
-                  <span>{edu.program.toUpperCase()} — {edu.institution.toUpperCase()}</span>
-                  <span className="text-slate-400">{edu.period}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white">
+                  <span>{edu.program} — {edu.institution}</span>
+                  <span className="text-slate-400 text-[11px]">{edu.period}</span>
                 </div>
-                {edu.honors && <div className="text-amber-300 text-[10px]">★ {edu.honors} {edu.gpa ? `(GPA: ${edu.gpa})` : ''}</div>}
+                {edu.honors && <div className="text-amber-300 text-[10px]">★ {edu.honors}</div>}
               </div>
             ))}
           </div>

@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "Personal Support Worker (PSW)",
   credentials: "PSW • CPR/AED Level C • GPA Certified • Mask Fit • VSC Cleared",
   tagline: "Compassionate, Person-Centred Healthcare & Long-Term Care Excellence",
-  objective: "Compassionate, reliable, and dedicated Personal Support Worker with hands-on experience in long-term care, providing person-centred support to residents with diverse physical, cognitive, and emotional needs. Skilled in assisting with activities of daily living (ADLs), safe transfers, mobility support, personal hygiene, feeding, infection prevention and control, and resident monitoring and documentation. Committed to promoting residents' dignity, independence, safety, and overall well-being through compassionate care, effective communication, and strong teamwork.",
+  objective: "Compassionate, reliable, and dedicated Personal Support Worker with hands-on experience in long-term care, providing person-centred support to residents with diverse physical, cognitive, and emotional needs. Skilled in assisting with activities of daily living (ADLs), safe transfers, mobility support, personal hygiene, feeding, infection prevention and control, and resident monitoring and documentation. Committed to promoting residents' dignity, independence, safety, and overall well-being through compassionate care, effective communication, and strong teamwork. Seeking to contribute my skills and experience to a professional healthcare team in a long-term care setting.",
   location: "Lindsay, Ontario, Canada",
   email: "smritidahal70@gmail.com",
   linkedin: "https://linkedin.com/in/smriti-dahal-4149a3242",
@@ -36,10 +36,10 @@ export const coreCompetencies = [
 
 export const experience = [
   {
-    role: "Personal Support Worker",
-    facility: "Victoria Manor",
-    location: "Lindsay, Canada",
-    period: "June 2025 – Present",
+    role: "PERSONAL SUPPORT WORKER",
+    facility: "VICTORIA MANOR",
+    location: "LINDSAY, CANADA",
+    period: "JUNE 2025 - PRESENT DAYS",
     type: "Long-Term Care (LTC)",
     highlights: [
       "Provide person-centered care to residents in a long-term care setting, following individual care plans and established safety procedures.",
@@ -53,88 +53,104 @@ export const experience = [
     ]
   },
   {
-    role: "Field Placement PSW",
-    facility: "Victoria Manor",
-    location: "Lindsay, Canada",
-    period: "March 2025 – April 2025",
+    role: "FIELD PLACEMENT",
+    facility: "VICTORIA MANOR",
+    location: "LINDSAY, CANADA",
+    period: "NOV 2024 - APRIL 2025",
     type: "Clinical Field Placement",
     highlights: [
-      "Completed rigorous supervised clinical practicum in long-term care, applying hands-on knowledge of resident care principles and safety guidelines.",
-      "Assisted residents with morning and evening care routines, hygiene, dining support, and social engagement.",
-      "Practiced safe resident transfer techniques under direct preceptor supervision using mechanical and non-mechanical aids.",
-      "Communicated resident observations and reported any signs of discomfort, skin changes, or behavioral shifts to registered staff.",
-      "Maintained professional resident boundaries, confidentiality, and infection control standards throughout the placement."
+      "Provided person-centered care by assisting residents with Activities of Daily Living (ADLs) including bathing, dressing, feeding, toileting, and mobility support.",
+      "Maintained clear and respectful communication with nursing staff, families, and interdisciplinary teams, reporting changes in residents' conditions.",
+      "Practiced strong infection prevention and control protocols, including proper hand hygiene, PPE use, and sanitation procedures.",
+      "Gained hands-on experience in safe client transfers and the use of assistive devices alongside experienced PSWs.",
+      "Fostered a compassionate and engaging environment, promoting emotional well-being and reducing social isolation through companionship and meaningful interaction.",
+      "Demonstrated adaptability and empathy in managing complex care situations while upholding resident dignity and comfort."
     ]
   },
   {
-    role: "Environmental / Field Technician",
-    facility: "City of Kawartha Lakes & Regional Community",
-    location: "Ontario, Canada",
-    period: "2023 – 2024",
-    type: "Community & Public Health Support",
+    role: "RESEARCH SUPPORT INTERN",
+    facility: "CLEANFARMS INC.",
+    location: "ETOBICOKE, ONTARIO, CANADA (REMOTE)",
+    period: "MARCH 2024 – APRIL 2024",
+    type: "Research Internship",
     highlights: [
-      "Conducted health, sanitation, and safety inspections following stringent Ontario occupational and environmental protocols.",
-      "Assisted in water quality, chemical safety, and hazard control monitoring, reinforcing meticulous adherence to public health guidelines.",
-      "Maintained detailed analytical logs, documentation, and compliance reporting with zero errors."
+      "Supported research initiatives focused on sustainability and waste management solutions, contributing to data collection and analysis.",
+      "Collaborated remotely with a multidisciplinary team, demonstrating strong communication and teamwork skills to achieve project goals.",
+      "Assisted in preparing research reports and summarizing findings for internal stakeholders.",
+      "Utilized remote tools for efficient project management, data sharing, and team collaboration.",
+      "Gained hands-on experience in environmental research, contributing to ongoing sustainability efforts in the industry."
     ]
   },
   {
-    role: "Healthcare & Community Customer Service",
-    facility: "Regional Service Operations",
-    location: "Kawartha Lakes, Ontario",
-    period: "2023 – 2024",
-    type: "Client Communication & Service",
+    role: "HOUSE KEEPING",
+    facility: "DAYS INN & SUITES",
+    location: "LINDSAY, CANADA",
+    period: "SEP 2023 – JUNE 2025",
+    type: "Hospitality & Hygiene",
     highlights: [
-      "Supported community members and vulnerable populations with compassionate, clear, and empathetic communication.",
-      "Handled scheduling, confidential records, and rapid problem resolution in fast-paced environments.",
-      "Applied de-escalation techniques, patience, and active listening to support individuals under emotional stress."
+      "Exceeded cleanliness standards, ensuring immaculate rooms at Days Inn & Suites.",
+      "Delivered exceptional customer service, guaranteeing guest satisfaction.",
+      "Proficient in utilizing cleaning equipment and maintaining safety protocols.",
+      "Implemented eco-friendly practices, contributing to sustainable housekeeping efforts."
     ]
   },
   {
-    role: "Environmental & Public Health Analyst",
-    facility: "Tribhuvan Research & Allied Health Projects",
-    location: "Nepal",
-    period: "2021 – 2022",
-    type: "Research & Analytical Baseline",
+    role: "JUNIOR SUSTAINABILITY OFFICER",
+    facility: "GREEN & CLEAN CITY SERVICE PVT.LTD",
+    location: "NEPAL",
+    period: "FEB 2022 - APRIL 2023",
+    type: "Environmental & Community Operations",
     highlights: [
-      "Conducted field sanitation assessments, hygiene baseline studies, and water quality reporting.",
-      "Applied statistical modeling and analytical research methodologies, instilling extreme attention to detail and rigorous charting discipline."
+      "Supported waste reduction and energy conservation initiatives, contributing to sustainable practices within the organization.",
+      "Promoted sustainability awareness through outreach programs, educating communities and businesses on eco-friendly practices.",
+      "Assisted in implementing environmental programs, such as recycling and resource conservation, to reduce the company’s ecological footprint.",
+      "Worked alongside the team to track and report on environmental performance, helping to improve sustainability efforts."
     ]
   }
 ];
 
 export const education = [
   {
-    program: "Personal Support Worker (PSW)",
-    institution: "Sir Sandford Fleming College",
+    program: "PERSONAL SUPPORT WORKER",
+    institution: "FLEMING COLLEGE, PETERBOROUGH",
     campus: "Peterborough, Ontario",
-    period: "May 2024 – April 2025",
-    honors: "GPA: 3.737 / 4.0 • Dean's List Academic Distinction",
+    period: "SEP 2024 – APRIL 2025",
+    honors: "GPA: 3.737 • Dean's List • Received Academic Excellence Award",
     details: [
-      "Comprehensive education in anatomy, physiology, palliative care, cognitive impairment, and therapeutic communication.",
-      "Completed intensive clinical simulation lab hours and practicum placements at Victoria Manor LTC."
+      "Certified in Standard Level C CPR and First Aid, ensuring prompt emergency response and safety.",
+      "Mask Fit Certified, with practical training in safe patient/resident handling techniques.",
+      "Proficient in identifying behavioral triggers and documenting using BSO-DOS tracking tools.",
+      "Familiar with resident safety policies, including abuse prevention and mandatory reporting procedures.",
+      "Up-to-date Vulnerable Sector Police Check (completed within the last 6 months).",
+      "Practical experience providing personal care and assistance with Activities of Daily Living (ADLs)."
     ]
   },
   {
-    program: "Waste Management (Health, Safety & Environment)",
-    institution: "Fleming College",
-    campus: "Peterborough, Ontario",
-    period: "May 2023 – April 2024",
+    program: "WASTE RESOURCE MANAGEMENT-ENVIRONMENTAL",
+    institution: "FLEMING COLLEGE, LINDSAY",
+    campus: "Lindsay, Ontario",
+    period: "SEP 2023 – MARCH 2024",
     honors: "Ontario College Graduate Certificate",
     details: [
-      "Gained comprehensive knowledge of sustainable waste management practices, hygiene, and environmental protection.",
-      "Developed hands-on skills in compliance standards, resource recovery, and health safety regulations."
+      "Gained comprehensive knowledge of sustainable waste management practices and environmental protection.",
+      "Developed hands-on skills in recycling systems, waste diversion, and resource recovery.",
+      "Learned to apply environmental legislation and compliance standards in real-world contexts.",
+      "Strengthened problem-solving and analytical skills for environmental planning and monitoring.",
+      "Studied circular economy principles to support long-term sustainability goals."
     ]
   },
   {
-    program: "Bachelor's in Environmental Science",
-    institution: "Tribhuvan University",
+    program: "BACHELOR’S IN ENVIRONMENTAL SCIENCE",
+    institution: "TRIBHUVAN UNIVERSITY",
     campus: "Nepal",
-    period: "May 2017 – June 2021",
+    period: "MAY 2017 - JUNE 2021",
     honors: "Bachelor of Science",
     details: [
-      "Specialized in core areas including ecology, environmental health, scientific research, and data reporting.",
-      "Conducted extensive fieldwork, laboratory analysis, and public health environmental assessments."
+      "Specialized in core areas such as ecology, environmental pollution, climate change, and resource management.",
+      "Gained knowledge of environmental impact assessments (EIA) and sustainable development practices.",
+      "Conducted field research and data analysis on environmental issues and natural resource conservation.",
+      "Studied waste management techniques, environmental laws, and global sustainability challenges.",
+      "Developed strong skills in research, report writing, and environmental monitoring tools."
     ]
   }
 ];
