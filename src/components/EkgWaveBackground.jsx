@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * EkgWaveBackground - Intuitive Multi-Lead Clinical Cardiac Monitor
- * Features:
- * - 4 Ambient Floating ECG Rhythm Strips drifting across the screen at different heights
- * - 1 Main Lead II Central Clinical Monitor with sweeping beam and phosphorescent decay
- * - Authentic P-Q-R-S-T cardiac waveform mathematics
- * - Millimeter medical grid with subtle ambient vignette
- * - Intuitive mouse proximity reaction: hovering reacts with vital telemetry HUD and pulse glow
+ * EkgWaveBackground - Intuitive Multi-Lead Clinical Cardiac Monitor (Slow & Calming)
+ * - Calming slow sweep speed (1.1px/frame)
+ * - Gentle ambient floating ECG rhythm strips drifting smoothly at different heights
+ * - Authentic Lead II P-Q-R-S-T voltage waveforms
+ * - Millimeter medical grid with subtle ambient atmosphere
+ * - Responsive mouse probe HUD on hover
  */
 export default function EkgWaveBackground() {
   const canvasRef = useRef(null);
@@ -51,25 +50,26 @@ export default function EkgWaveBackground() {
     initMainBuffer();
 
     let scanX = 0;
-    const sweepSpeed = 2.2;
-    const beatWidth = 280;
-    const mainAmp = 65;
+    // Slower, calming sweep speed
+    const sweepSpeed = 1.15;
+    const beatWidth = 320;
+    const mainAmp = 62;
 
-    // Ambient Floating ECG Waves (drifting from left to right at various heights)
+    // Ambient Floating ECG Waves (slower, soothing drift)
     const ambientWaves = [
-      { yRel: 0.16, amp: 22, speed: 1.1, beatW: 210, alpha: 0.16, label: 'LEAD I', offset: 0.15 },
-      { yRel: 0.32, amp: 18, speed: 0.85, beatW: 190, alpha: 0.12, label: 'aVR', offset: 0.42 },
-      { yRel: 0.68, amp: 26, speed: 1.3, beatW: 240, alpha: 0.18, label: 'V1', offset: 0.70 },
-      { yRel: 0.84, amp: 20, speed: 0.95, beatW: 200, alpha: 0.14, label: 'V5', offset: 0.30 },
-      { yRel: 0.93, amp: 14, speed: 0.75, beatW: 170, alpha: 0.10, label: 'PLETH', offset: 0.85 },
+      { yRel: 0.16, amp: 20, speed: 0.38, beatW: 240, alpha: 0.14, label: 'LEAD I', offset: 0.15 },
+      { yRel: 0.32, amp: 16, speed: 0.30, beatW: 220, alpha: 0.10, label: 'aVR', offset: 0.42 },
+      { yRel: 0.68, amp: 22, speed: 0.42, beatW: 260, alpha: 0.15, label: 'V1', offset: 0.70 },
+      { yRel: 0.84, amp: 18, speed: 0.32, beatW: 230, alpha: 0.12, label: 'V5', offset: 0.30 },
+      { yRel: 0.93, amp: 12, speed: 0.25, beatW: 200, alpha: 0.08, label: 'PLETH', offset: 0.85 },
     ];
 
-    // Floating independent pulse packets that drift across
+    // Floating independent pulse packets (slow, graceful drift)
     const floatingPackets = [
-      { x: width * 0.1, yRel: 0.24, vx: 0.6, width: 220, amp: 24, alpha: 0.22, color: '16, 185, 129' },
-      { x: width * 0.6, yRel: 0.40, vx: 0.8, width: 260, amp: 28, alpha: 0.20, color: '20, 184, 166' },
-      { x: width * 0.3, yRel: 0.76, vx: 0.7, width: 240, amp: 25, alpha: 0.24, color: '6, 182, 212' },
-      { x: width * 0.8, yRel: 0.88, vx: 0.5, width: 190, amp: 20, alpha: 0.18, color: '16, 185, 129' },
+      { x: width * 0.1, yRel: 0.24, vx: 0.25, width: 240, amp: 22, alpha: 0.18, color: '16, 185, 129' },
+      { x: width * 0.6, yRel: 0.40, vx: 0.30, width: 280, amp: 25, alpha: 0.16, color: '20, 184, 166' },
+      { x: width * 0.3, yRel: 0.76, vx: 0.28, width: 260, amp: 22, alpha: 0.19, color: '6, 182, 212' },
+      { x: width * 0.8, yRel: 0.88, vx: 0.22, width: 210, amp: 18, alpha: 0.15, color: '16, 185, 129' },
     ];
 
     // Mouse Interaction
@@ -99,42 +99,42 @@ export default function EkgWaveBackground() {
       const smallGrid = 22;
       const largeGrid = 110;
 
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.025)';
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.022)';
       ctx.lineWidth = 0.5;
       ctx.beginPath();
       for (let x = 0; x < width; x += smallGrid) { ctx.moveTo(x, 0); ctx.lineTo(x, height); }
       for (let y = 0; y < height; y += smallGrid) { ctx.moveTo(0, y); ctx.lineTo(width, y); }
       ctx.stroke();
 
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.055)';
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.048)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let x = 0; x < width; x += largeGrid) { ctx.moveTo(x, 0); ctx.lineTo(x, height); }
       for (let y = 0; y < height; y += largeGrid) { ctx.moveTo(0, y); ctx.lineTo(width, y); }
       ctx.stroke();
 
-      // 2. Ambient Floating Continuous ECG Rhythm Strips
+      // 2. Ambient Continuous ECG Waves (Slow & Soothing)
       ambientWaves.forEach((wave) => {
         const baseY = height * wave.yRel;
         const scrollOffset = (frame * wave.speed) % wave.beatW;
 
-        // Subtle baseline guide
-        ctx.strokeStyle = `rgba(16, 185, 129, ${wave.alpha * 0.35})`;
-        ctx.setLineDash([3, 10]);
+        // Faint baseline guide
+        ctx.strokeStyle = `rgba(16, 185, 129, ${wave.alpha * 0.3})`;
+        ctx.setLineDash([3, 12]);
         ctx.beginPath();
         ctx.moveTo(0, baseY);
         ctx.lineTo(width, baseY);
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Small Lead label
-        ctx.fillStyle = `rgba(16, 185, 129, ${wave.alpha * 1.8})`;
+        // Small Lead designation
+        ctx.fillStyle = `rgba(16, 185, 129, ${wave.alpha * 1.5})`;
         ctx.font = '9px monospace';
         ctx.fillText(wave.label, 20, baseY - 6);
 
-        // Wave trace
+        // Slow wave trace
         ctx.strokeStyle = `rgba(16, 185, 129, ${wave.alpha})`;
-        ctx.lineWidth = 1.3;
+        ctx.lineWidth = 1.2;
         ctx.lineCap = 'round';
         ctx.beginPath();
 
@@ -143,11 +143,10 @@ export default function EkgWaveBackground() {
           const phase = (((x + scrollOffset) / wave.beatW) + wave.offset) % 1.0;
           let v = getEcgVoltage(phase);
 
-          // Subtle mouse proximity warping
           if (mouse.active) {
             const dist = Math.hypot(x - mouse.x, baseY - mouse.y);
-            if (dist < 180) {
-              const boost = (1 - dist / 180) * 0.4;
+            if (dist < 160) {
+              const boost = (1 - dist / 160) * 0.35;
               v *= (1 + boost);
             }
           }
@@ -163,17 +162,16 @@ export default function EkgWaveBackground() {
         ctx.stroke();
       });
 
-      // 3. Floating Mini ECG Packets (Independent drifting waveforms)
+      // 3. Floating Drifting ECG Packets
       floatingPackets.forEach((pkt) => {
         pkt.x += pkt.vx;
         if (pkt.x > width + pkt.width) pkt.x = -pkt.width;
 
-        const baseY = height * pkt.yRel + Math.sin(frame * 0.015 + pkt.vx) * 8;
+        const baseY = height * pkt.yRel + Math.sin(frame * 0.008 + pkt.vx) * 6;
         ctx.save();
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1.5;
         ctx.lineCap = 'round';
 
-        // Gradient fade on edges of the floating wave packet
         const grad = ctx.createLinearGradient(pkt.x, 0, pkt.x + pkt.width, 0);
         grad.addColorStop(0, `rgba(${pkt.color}, 0)`);
         grad.addColorStop(0.25, `rgba(${pkt.color}, ${pkt.alpha})`);
@@ -184,7 +182,7 @@ export default function EkgWaveBackground() {
         ctx.beginPath();
         let started = false;
         for (let px = 0; px < pkt.width; px += 2) {
-          const phase = (px / pkt.width) * 1.5;
+          const phase = (px / pkt.width) * 1.4;
           const v = getEcgVoltage(phase);
           const screenX = pkt.x + px;
           const screenY = baseY - v * pkt.amp;
@@ -198,24 +196,23 @@ export default function EkgWaveBackground() {
         }
         ctx.stroke();
 
-        // Glowing heart pulse dot on R-peak
+        // Subtle R-peak glow dot
         const peakX = pkt.x + pkt.width * 0.22;
         const peakY = baseY - pkt.amp;
         if (peakX > 0 && peakX < width) {
-          ctx.fillStyle = `rgba(${pkt.color}, ${pkt.alpha * 1.5})`;
+          ctx.fillStyle = `rgba(${pkt.color}, ${pkt.alpha * 1.4})`;
           ctx.beginPath();
-          ctx.arc(peakX, peakY, 2, 0, Math.PI * 2);
+          ctx.arc(peakX, peakY, 1.8, 0, Math.PI * 2);
           ctx.fill();
         }
         ctx.restore();
       });
 
-      // 4. Central Main Lead II Monitor with Phosphorescent Sweeping Beam
+      // 4. Central Lead II Monitor (Slow, Relaxing Sweep)
       const mainBaseY = height * 0.48;
 
-      // Stable center baseline
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.12)';
-      ctx.setLineDash([4, 8]);
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.10)';
+      ctx.setLineDash([4, 10]);
       ctx.beginPath();
       ctx.moveTo(0, mainBaseY);
       ctx.lineTo(width, mainBaseY);
@@ -235,9 +232,9 @@ export default function EkgWaveBackground() {
 
       if (scanX >= width) scanX = 0;
 
-      // Draw Main Sweep Trace
-      const eraseGap = 36;
-      ctx.lineWidth = 2.2;
+      // Draw Main Sweep Trace with smooth decay
+      const eraseGap = 40;
+      ctx.lineWidth = 2.0;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
@@ -253,7 +250,7 @@ export default function EkgWaveBackground() {
           continue;
         }
 
-        const decayAlpha = Math.max(0.18, 0.85 - (distFromHead / width) * 0.65);
+        const decayAlpha = Math.max(0.16, 0.80 - (distFromHead / width) * 0.62);
         ctx.strokeStyle = `rgba(16, 185, 129, ${decayAlpha})`;
 
         const y = ecgBuffer[idx] || mainBaseY;
@@ -268,44 +265,44 @@ export default function EkgWaveBackground() {
       }
       if (isDrawing) ctx.stroke();
 
-      // Sweep Beam Head Glow
+      // Glowing Sweep Beam Tip
       const headY = ecgBuffer[Math.floor(scanX)] || mainBaseY;
-      const headGlow = ctx.createRadialGradient(scanX, headY, 1, scanX, headY, 32);
-      headGlow.addColorStop(0, 'rgba(52, 211, 153, 0.8)');
-      headGlow.addColorStop(0.3, 'rgba(16, 185, 129, 0.3)');
+      const headGlow = ctx.createRadialGradient(scanX, headY, 1, scanX, headY, 28);
+      headGlow.addColorStop(0, 'rgba(52, 211, 153, 0.75)');
+      headGlow.addColorStop(0.35, 'rgba(16, 185, 129, 0.25)');
       headGlow.addColorStop(1, 'rgba(16, 185, 129, 0)');
       ctx.fillStyle = headGlow;
       ctx.beginPath();
-      ctx.arc(scanX, headY, 32, 0, Math.PI * 2);
+      ctx.arc(scanX, headY, 28, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.fillStyle = '#a7f3d0';
       ctx.shadowColor = '#10b981';
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 10;
       ctx.beginPath();
-      ctx.arc(scanX, headY, 2.5, 0, Math.PI * 2);
+      ctx.arc(scanX, headY, 2.2, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // 5. Clinical Telemetry Header
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.45)';
+      // 5. Clinical Telemetry Label
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.38)';
       ctx.font = '10px monospace';
       ctx.fillText('LEAD II • 25mm/s • 10mm/mV • FILTER 0.05-40Hz • MULTI-LEAD ACTIVE', 24, 32);
 
-      // 6. Intuitive Mouse Telemetry Probe
+      // 6. Interactive Mouse Telemetry Probe
       if (mouse.active && mouse.x > 0 && mouse.x < width) {
-        ctx.strokeStyle = 'rgba(16, 185, 129, 0.20)';
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.18)';
         ctx.setLineDash([2, 4]);
         ctx.beginPath();
-        ctx.moveTo(mouse.x, mainBaseY - mainAmp - 25);
-        ctx.lineTo(mouse.x, mainBaseY + mainAmp + 25);
+        ctx.moveTo(mouse.x, mainBaseY - mainAmp - 20);
+        ctx.lineTo(mouse.x, mainBaseY + mainAmp + 20);
         ctx.stroke();
         ctx.setLineDash([]);
 
         const intersectY = ecgBuffer[Math.floor(mouse.x)] || mainBaseY;
         ctx.fillStyle = '#34d399';
         ctx.beginPath();
-        ctx.arc(mouse.x, intersectY, 4, 0, Math.PI * 2);
+        ctx.arc(mouse.x, intersectY, 3.5, 0, Math.PI * 2);
         ctx.fill();
 
         const hudX = mouse.x + 14;
@@ -313,7 +310,7 @@ export default function EkgWaveBackground() {
 
         if (hudX < width - 170 && hudY > 30) {
           ctx.fillStyle = 'rgba(7, 11, 19, 0.94)';
-          ctx.strokeStyle = 'rgba(16, 185, 129, 0.50)';
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.roundRect(hudX, hudY, 160, 48, 7);
@@ -322,7 +319,7 @@ export default function EkgWaveBackground() {
 
           ctx.fillStyle = '#34d399';
           ctx.font = 'bold 10px monospace';
-          ctx.fillText('❤️ Sinus Rhythm • 72 BPM', hudX + 8, hudY + 16);
+          ctx.fillText('❤️ Sinus Rhythm • 68 BPM', hudX + 8, hudY + 16);
 
           ctx.fillStyle = '#94a3b8';
           ctx.font = '9px monospace';
@@ -349,7 +346,7 @@ export default function EkgWaveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-85"
+      className="fixed inset-0 pointer-events-none z-0 opacity-80"
       aria-hidden="true"
     />
   );
