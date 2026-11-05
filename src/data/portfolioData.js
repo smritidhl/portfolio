@@ -9,7 +9,7 @@ export const personalInfo = {
   linkedin: "https://linkedin.com/in/smriti-dahal-4149a3242",
   avatar: "/assets/smriti-profile.jpg",
   gpaScore: "3.737",
-  academicAward: "Academic Excellence Award — Fleming College",
+  academicAward: "Dean's List Academic Distinction — Fleming College",
 };
 
 export const keyStats = [
@@ -109,7 +109,7 @@ export const education = [
     institution: "Sir Sandford Fleming College",
     campus: "Peterborough, Ontario",
     period: "May 2024 – April 2025",
-    honors: "GPA: 3.737 / 4.0 • Academic Excellence Award • President's Honour Roll",
+    honors: "GPA: 3.737 / 4.0 • Dean's List Academic Distinction",
     details: [
       "Comprehensive education in anatomy, physiology, palliative care, cognitive impairment, and therapeutic communication.",
       "Completed intensive clinical simulation lab hours and practicum placements at Victoria Manor LTC."
@@ -158,7 +158,26 @@ export const certificates = [
       "Conferred at Peterborough, Ontario on June 10, 2025",
       "Hands-on clinical training in Long-Term Care, Restorative Mobility & Hoyer Transfers",
       "Pharmacology, Vital Signs, and Point-of-Care (POC) Clinical Documentation",
-      "Graduated with 3.737 GPA and Academic Excellence Standing"
+      "Graduated with 3.737 GPA and Dean's List Standing"
+    ]
+  },
+  {
+    id: "deans-list",
+    title: "Dean's List Academic Distinction Award",
+    standard: "School of Health & Community Services, Fleming College",
+    issuer: "Kevin Griffin, Dean, School of Health & Community Services",
+    institution: "Fleming College (Peterborough, Lindsay, Haliburton)",
+    certNumber: "DEANS-LIST-W2025",
+    issueDate: "May 21, 2025",
+    status: "Dean's List Honoree",
+    pdfUrl: "/assets/deans-list-letter.pdf",
+    badge: "Academic Distinction",
+    color: "from-amber-500 to-orange-600",
+    topics: [
+      "Awarded for remarkable academic achievement during the Winter 2025 semester",
+      "Recognized by Dean Kevin Griffin for diligence, persistence, exceptional grades, and passion",
+      "Exemplifies the best of Fleming College School of Health & Community Services",
+      "Top-tier GPA standing (3.737 / 4.0)"
     ]
   },
   {

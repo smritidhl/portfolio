@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Activity, ShieldCheck, HeartPulse, CheckCircle2, UserCheck, Stethoscope, Clock, FileEdit, Plus, Sparkles } from 'lucide-react';
+import { Activity, ShieldCheck, HeartPulse, CheckCircle2, UserCheck, Stethoscope, Clock, FileEdit, Sparkles } from 'lucide-react';
 
 export default function ClinicalLiveCharting() {
   const [logs, setLogs] = useState([
@@ -22,7 +22,6 @@ export default function ClinicalLiveCharting() {
   const handleSimulateCheck = () => {
     setSimulating(true);
     setTimeout(() => {
-      // Generate slight natural variation
       const newHr = 68 + Math.floor(Math.random() * 8);
       const newSys = 116 + Math.floor(Math.random() * 6);
       const newDia = 74 + Math.floor(Math.random() * 4);
@@ -39,7 +38,7 @@ export default function ClinicalLiveCharting() {
       setLogs((prev) => [
         {
           time: timeStr,
-          entry: `Vital signs verified (HR: ${newHr} bpm, BP: ${newSys}/${newDia}). Skin intact. Fluid intake verified.`,
+          entry: `Routine vitals verified (HR: ${newHr} bpm, BP: ${newSys}/${newDia}). Skin intact. Hydration verified.`,
           type: 'Vitals'
         },
         ...prev.slice(0, 4)
@@ -65,28 +64,28 @@ export default function ClinicalLiveCharting() {
             Live Clinical Charting & Shift Telemetry
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 mt-2">
-            Simulating PointClickCare (POC) daily resident care logs, vital signs surveillance, and BSO-DOS dementia observation routines.
+            Sample PointClickCare (POC) daily resident care workflow, vital signs surveillance, and BSO-DOS dementia observation routines.
           </p>
         </div>
 
         {/* Telemetry & Charting Dashboard */}
         <div className="max-w-4xl mx-auto rounded-3xl border border-slate-800 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-md space-y-6">
           
-          {/* Top Unit & Resident Header */}
+          {/* Top Unit Header (Completely Anonymized & Sample Training Model) */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-800/80 flex items-center justify-center text-emerald-400 font-bold text-sm">
-                LTC
+                POC
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-white">Victoria Manor Unit 2 • Resident Chart</h3>
+                  <h3 className="text-base font-bold text-white">Sample Resident Care Plan • Training Simulation Unit</h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800">
-                    Active Shift
+                    Sample Simulation
                   </span>
                 </div>
                 <div className="text-xs text-slate-400 mt-0.5">
-                  Assigned PSW: <strong className="text-slate-200">Smriti Dahal, PSW</strong>
+                  Demonstration Profile • Clinical Skills Demonstration
                 </div>
               </div>
             </div>
@@ -145,9 +144,9 @@ export default function ClinicalLiveCharting() {
             <div className="flex items-center justify-between text-xs text-slate-400 font-semibold">
               <span className="flex items-center gap-1.5">
                 <FileEdit className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Recent Point-of-Care (POC) Chart Entries</span>
+                <span>Simulated Point-of-Care (POC) Chart Entries</span>
               </span>
-              <span className="text-[11px] text-emerald-400 font-normal">Synchronized Real-Time</span>
+              <span className="text-[11px] text-emerald-400 font-normal">Training Demonstration</span>
             </div>
 
             <div className="space-y-2">
@@ -174,9 +173,13 @@ export default function ClinicalLiveCharting() {
           {justLogged && (
             <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-700/80 text-emerald-300 text-xs flex items-center justify-center gap-2 animate-fadeIn">
               <CheckCircle2 className="w-4 h-4 shrink-0" />
-              <span>Shift observation logged to electronic medical chart successfully!</span>
+              <span>Shift observation logged to sample simulation chart successfully!</span>
             </div>
           )}
+
+          <div className="pt-2 text-center text-[10px] text-slate-500">
+            * Strictly simulated sample chart data for professional skills demonstration in accordance with PHIPA standards.
+          </div>
 
         </div>
 

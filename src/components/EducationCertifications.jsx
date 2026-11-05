@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { certificates } from '../data/portfolioData';
-import { Award, ShieldCheck, CheckCircle2, ExternalLink, Eye, Download, GraduationCap, X } from 'lucide-react';
+import { Award, ShieldCheck, CheckCircle2, ExternalLink, Eye, Download, GraduationCap, X, Sparkles } from 'lucide-react';
 
 export default function EducationCertifications() {
   const [selectedCert, setSelectedCert] = useState(null);
 
-  // 4 official verified certificates
   const flemingCert = certificates.find((c) => c.id === 'psw-diploma') || certificates[0];
-  const redCrossCert = certificates.find((c) => c.id === 'redcross') || certificates[1];
-  const whmisCert = certificates.find((c) => c.id === 'whmis') || certificates[2];
-  const gpaCert = certificates.find((c) => c.id === 'gpa') || certificates[3];
+  const deansListCert = certificates.find((c) => c.id === 'deans-list') || certificates[1];
+  const redCrossCert = certificates.find((c) => c.id === 'redcross') || certificates[2];
+  const whmisCert = certificates.find((c) => c.id === 'whmis') || certificates[3];
+  const gpaCert = certificates.find((c) => c.id === 'gpa') || certificates[4];
 
   return (
     <section id="certificates" className="py-20 border-t border-slate-800/80 bg-[#070b13]/80 relative">
@@ -19,18 +19,18 @@ export default function EducationCertifications() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-xs font-semibold text-emerald-400 mb-3 shadow-sm">
             <Award className="w-3.5 h-3.5" />
-            <span>Official Healthcare Licences</span>
+            <span>Official Healthcare Licences & Honors</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Official Certificates & Licences
+            Official Certificates & Academic Honors
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 mt-2">
             Every credential is authenticated, active, and fully compliant with Ontario Ministry of Health and Long-Term Care standards.
           </p>
         </div>
 
-        {/* 4 Official Verified Certificate Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+        {/* 5 Official Verified Certificate & Distinction Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
 
           {/* Card 1: Fleming College Ontario College Certificate */}
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-emerald-950/30 flex flex-col justify-between group">
@@ -89,7 +89,75 @@ export default function EducationCertifications() {
             </div>
           </div>
 
-          {/* Card 2: Canadian Red Cross First Aid & CPR Level C */}
+          {/* Card 2: Dean's List Academic Distinction Letter */}
+          <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-amber-950/30 flex flex-col justify-between group">
+            <div className="space-y-4">
+              {/* Dean's List Visual Preview */}
+              <div className="relative rounded-xl overflow-hidden bg-white text-slate-900 p-4 aspect-[16/10] flex flex-col justify-between shadow-md border border-slate-200">
+                <div className="flex items-center justify-between border-b border-amber-500/30 pb-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm">
+                      FL
+                    </div>
+                    <div>
+                      <div className="font-extrabold text-[11px] text-slate-900 leading-none">FLEMING COLLEGE</div>
+                      <div className="text-[8px] text-slate-500">School of Health & Community Services</div>
+                    </div>
+                  </div>
+                  <span className="text-[8px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded-full border border-amber-300">
+                    Dean's List
+                  </span>
+                </div>
+
+                <div className="my-auto py-1 text-center">
+                  <div className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">Academic Distinction Award</div>
+                  <div className="text-sm font-extrabold text-slate-900 mt-0.5">Smriti Dahal</div>
+                  <div className="text-[9px] text-amber-800 font-semibold">Winter 2025 Semester • GPA: 3.737</div>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-slate-200 pt-1.5 text-[9px] text-slate-600">
+                  <span>Conferred by: <strong>Dean Kevin Griffin</strong></span>
+                  <span className="text-emerald-700 font-bold">May 21, 2025</span>
+                </div>
+              </div>
+
+              {/* Card Details */}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-amber-400">School of Health & Community Services</span>
+                  <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Dean's List Honoree</span>
+                  </span>
+                </div>
+                <h3 className="font-bold text-white text-base">Dean's List Academic Distinction Letter</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Official letter from Dean Kevin Griffin congratulating Smriti on remarkable academic achievement, exceptional grades, and diligence.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+              <button
+                onClick={() => setSelectedCert(deansListCert)}
+                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+              >
+                <Eye className="w-3.5 h-3.5 text-amber-400" />
+                <span>Inspect Certificate</span>
+              </button>
+              <a
+                href="/assets/deans-list-letter.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                title="Download Official PDF Letter"
+              >
+                <Download className="w-3.5 h-3.5 text-amber-400" />
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3: Canadian Red Cross First Aid & CPR Level C */}
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-red-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-red-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* Certificate Visual Preview */}
@@ -132,7 +200,7 @@ export default function EducationCertifications() {
                 </div>
                 <h3 className="font-bold text-white text-base">Standard First Aid & CPR/AED Level C</h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Adult, child, and infant CPR with automated external defibrillator (AED) operation, vital checks, and airway obstruction relief.
+                  Adult, child, and infant CPR with automated external defibrillator (AED) operation, vital checks, and airway emergency rescue.
                 </p>
               </div>
             </div>
@@ -157,7 +225,7 @@ export default function EducationCertifications() {
             </div>
           </div>
 
-          {/* Card 3: WHMIS 2015 For Workers */}
+          {/* Card 4: WHMIS 2015 For Workers */}
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-blue-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* Real WHMIS Certificate Image Preview */}
@@ -214,7 +282,7 @@ export default function EducationCertifications() {
             </div>
           </div>
 
-          {/* Card 4: GPA Gentle Persuasive Approaches */}
+          {/* Card 5: GPA Gentle Persuasive Approaches */}
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-teal-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-teal-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* GPA Certificate Visual Canvas */}
