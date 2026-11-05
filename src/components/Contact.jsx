@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 import { personalInfo } from "../data/portfolioData";
-import { Mail, MapPin, Send, CheckCircle2, Copy, ExternalLink, Loader2 } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, Copy, ExternalLink, Loader2, Globe2 } from "lucide-react";
 import { LinkedinIcon } from "./SocialIcons";
 
 export default function Contact() {
@@ -84,14 +84,15 @@ export default function Contact() {
             {/* Left: Contact Info */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <div className="text-xs text-emerald-400 uppercase tracking-wider mb-1 font-semibold">
-                  Connect &amp; Inquire
+                <div className="text-xs text-emerald-400 uppercase tracking-wider mb-1 font-semibold flex items-center gap-1.5">
+                  <Globe2 className="w-3.5 h-3.5" />
+                  <span>Available Across Canada</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white">
                   Get in Touch
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-2">
-                  Open for opportunities in Long-Term Care (LTC) facilities, sub-acute rehabilitation, and healthcare staffing across Lindsay &amp; Kawartha Lakes, Ontario.
+                  Open for opportunities in Long-Term Care (LTC) facilities, sub-acute rehabilitation hospitals, and healthcare staffing across Canada (open to relocation &amp; travel).
                 </p>
               </div>
 
@@ -113,10 +114,15 @@ export default function Contact() {
                   </button>
                 </div>
 
-                {/* Location */}
-                <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-2.5 text-slate-200">
-                  <MapPin className="w-4 h-4 text-emerald-400" />
-                  <span>{personalInfo.location}</span>
+                {/* Location - Across Canada */}
+                <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-slate-200">
+                  <div className="flex items-center gap-2.5">
+                    <MapPin className="w-4 h-4 text-emerald-400" />
+                    <span>Canada <span className="text-slate-400">(Nationwide / Open to Relocation)</span></span>
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                    Canada-wide
+                  </span>
                 </div>
 
                 {/* LinkedIn */}
@@ -139,7 +145,7 @@ export default function Contact() {
                 <div className="text-[11px] text-slate-400 mb-2">Or compose via webmail:</div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <a
-                    href={"https://mail.google.com/mail/?view=cm&fs=1&to=" + personalInfo.email + "&su=PSW%20Placement%20Inquiry"}
+                    href={"https://mail.google.com/mail/?view=cm&fs=1&to=" + personalInfo.email + "&su=PSW%20Placement%20Inquiry%20-%20Canada"}
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-red-500/50 hover:bg-red-950/20 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
@@ -148,7 +154,7 @@ export default function Contact() {
                     <span>Open in Gmail</span>
                   </a>
                   <a
-                    href={"https://outlook.live.com/mail/0/deeplink/compose?to=" + personalInfo.email + "&subject=PSW%20Placement%20Inquiry"}
+                    href={"https://outlook.live.com/mail/0/deeplink/compose?to=" + personalInfo.email + "&subject=PSW%20Placement%20Inquiry%20-%20Canada"}
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/50 hover:bg-blue-950/20 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
@@ -206,7 +212,7 @@ export default function Contact() {
                       <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Your Email</label>
                       <input
                         type="email"
-                        placeholder="e.g. care@victoriamanor.ca"
+                        placeholder="e.g. care@facility.ca"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -222,9 +228,10 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, facilityOrType: e.target.value })}
                       className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
                     >
-                      <option>Long-Term Care Facility Staffing</option>
-                      <option>Sub-Acute / Hospital Rehabilitation Placement</option>
-                      <option>Community Healthcare Coordination</option>
+                      <option>Long-Term Care Facility Staffing (Canada-wide)</option>
+                      <option>Hospital / Sub-Acute Rehabilitation Placement</option>
+                      <option>Community &amp; Home Healthcare Coordination</option>
+                      <option>Travel PSW / Relocation Opportunity</option>
                       <option>General Professional Inquiry</option>
                     </select>
                   </div>
