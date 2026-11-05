@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 import { personalInfo } from "../data/portfolioData";
-import { Mail, MapPin, Send, CheckCircle2, Copy, ExternalLink, Loader2, AlertCircle } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, Copy, ExternalLink, Loader2 } from "lucide-react";
 import { LinkedinIcon } from "./SocialIcons";
 
 export default function Contact() {
@@ -15,7 +15,7 @@ export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [fallbackReady, setFallbackReady] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -23,63 +23,37 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const constructMailBody = () => {
-    return encodeURIComponent(
-      `SENDER: ${formData.name}\n` +
-      `REPLY TO: ${formData.email}\n` +
-      `FACILITY/PURPOSE: ${formData.facilityOrType}\n\n` +
-      `MESSAGE:\n${formData.message}`
-    );
-  };
-
-  const getGmailUrl = () => {
-    const su = encodeURIComponent(formData.subject || `PSW Inquiry from ${formData.name}`);
-    return `https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}&su=${su}&body=${constructMailBody()}`;
-  };
-
-  const getMailtoUrl = () => {
-    const su = encodeURIComponent(formData.subject || `PSW Inquiry from ${formData.name}`);
-    return `mailto:${personalInfo.email}?subject=${su}&body=${constructMailBody()}`;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setSubmitting(true);
-    setFallbackReady(false);
+    setErrorMessage(null);
 
     const payload = {
+      access_key: "31c4778b-0e44-43d4-9317-521499db0579",
+      from_name: `${formData.name} via Portfolio`,
       name: formData.name,
       email: formData.email,
       inquiry_purpose: formData.facilityOrType,
-      subject: formData.subject || "PSW Healthcare Opportunity",
+      subject: formData.subject ? `[PSW Inquiry] ${formData.subject}` : `[PSW Inquiry] New Healthcare Message from ${formData.name}`,
       message: formData.message,
-      _subject: `New Portfolio Inquiry from ${formData.name}: ${formData.subject || "Healthcare Opportunity"}`,
-      _replyto: formData.email,
-      _cc: "smritidahal70@gmail.com",
-      _template: "table",
-      _captcha: "false"
+      reply_to: formData.email
     };
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 6000);
-
-      const res = await fetch("https://formsubmit.co/ajax/3a7f3a3254ca1ae0ac55ae3aebe2d7dd", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify(payload),
-        signal: controller.signal
+        body: JSON.stringify(payload)
       });
-      clearTimeout(timeoutId);
 
-      const data = await res.json().catch(() => null);
+      const data = await res.json();
 
-      if (res.ok && data && (data.success === true || data.success === "true")) {
+      if (res.ok && (data.success === true || data.success === "true")) {
         setSubmitted(true);
         setFormData({
           name: "",
@@ -89,12 +63,11 @@ export default function Contact() {
           message: ""
         });
       } else {
-        // FormSubmit is returning 522 or offline
-        setFallbackReady(true);
+        throw new Error(data.message || "Failed to transmit inquiry");
       }
     } catch (err) {
-      // Server outage (Cloudflare 522 or timeout) — activate direct 1-click fallback
-      setFallbackReady(true);
+      console.warn("Direct dispatch error:", err);
+      setErrorMessage("Transmission delayed. You can also send directly via Gmail/Outlook on the left.");
     } finally {
       setSubmitting(false);
     }
@@ -202,54 +175,21 @@ export default function Contact() {
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
-                      setFallbackReady(false);
+                      setErrorMessage(null);
                     }}
                     className="text-xs text-emerald-400 hover:text-emerald-300 underline underline-offset-2 cursor-pointer pt-2"
                   >
                     Send another message
                   </button>
                 </div>
-              ) : fallbackReady ? (
-                <div className="p-7 rounded-2xl bg-slate-950/90 border border-amber-600/50 text-center space-y-4 animate-fadeIn">
-                  <div className="w-11 h-11 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto text-amber-400">
-                    <AlertCircle className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-white">Direct Server Busy</h3>
-                    <p className="text-xs text-slate-300 mt-1 max-w-sm mx-auto">
-                      Click below to deliver your formatted message directly to Smriti’s email inbox with one tap:
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <a
-                      href={getGmailUrl()}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="py-3 px-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition"
-                    >
-                      <span>Open Pre-filled in Gmail</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={getMailtoUrl()}
-                      className="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition"
-                    >
-                      <span>Open in Mail App</span>
-                      <Send className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setFallbackReady(false)}
-                    className="text-[11px] text-slate-400 hover:text-slate-200 underline cursor-pointer pt-2 block mx-auto"
-                  >
-                    ← Back to edit message
-                  </button>
-                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
+                  {errorMessage && (
+                    <div className="p-3 rounded-xl bg-amber-950/60 border border-amber-800/80 text-amber-300 text-xs text-center">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Your Name / Facility</label>
