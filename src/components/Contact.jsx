@@ -4,51 +4,13 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, ExternalLink } from 'luc
 import { LinkedinIcon } from './SocialIcons';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    senderName: '',
-    senderEmail: '',
-    facilityOrType: 'Long-Term Care Facility',
-    subject: '',
-    message: ''
-  });
-
   const [copied, setCopied] = useState(false);
-  const [sentSuccess, setSentSuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleSendEmail = (e) => {
-    e.preventDefault();
-    const finalSubject = encodeURIComponent(
-      `[Healthcare Placement / Inquiry] ${formData.subject || formData.facilityOrType} - ${formData.senderName}`
-    );
-    const finalBody = encodeURIComponent(
-      `Name: ${formData.senderName}\nEmail: ${formData.senderEmail}\nInquiry Type: ${formData.facilityOrType}\n\nMessage:\n${formData.message}\n\n-- Sent via Smriti Dahal PSW Portfolio`
-    );
-
-    // Trigger user's mail client directly
-    window.location.href = `mailto:${personalInfo.email}?subject=${finalSubject}&body=${finalBody}`;
-    setSentSuccess(true);
-    setTimeout(() => setSentSuccess(false), 5000);
-  };
-
-  const openWebmail = (service) => {
-    const finalSubject = encodeURIComponent(
-      `[Healthcare Placement / Inquiry] ${formData.subject || formData.facilityOrType} - ${formData.senderName || 'Inquirer'}`
-    );
-    const finalBody = encodeURIComponent(
-      `Name: ${formData.senderName}\nEmail: ${formData.senderEmail}\n\nMessage:\n${formData.message}`
-    );
-
-    if (service === 'gmail') {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}&su=${finalSubject}&body=${finalBody}`, '_blank');
-    } else if (service === 'outlook') {
-      window.open(`https://outlook.live.com/mail/0/deeplink/compose?to=${personalInfo.email}&subject=${finalSubject}&body=${finalBody}`, '_blank');
-    }
   };
 
   return (
@@ -64,7 +26,7 @@ export default function Contact() {
             {/* Contact Bio & Links */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider mb-1">
+                <div className="text-xs text-emerald-400 uppercase tracking-wider mb-1 font-semibold">
                   Connect & Inquire
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white">
@@ -76,7 +38,7 @@ export default function Contact() {
               </div>
 
               {/* Direct Info List */}
-              <div className="space-y-3.5 text-xs font-mono">
+              <div className="space-y-3.5 text-xs">
                 {/* Email with copy button */}
                 <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between">
                   <div className="flex items-center gap-2.5 text-slate-200">
@@ -85,7 +47,7 @@ export default function Contact() {
                   </div>
                   <button
                     onClick={handleCopyEmail}
-                    className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                    className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
                     title="Copy Email Address"
                   >
                     {copied ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -103,119 +65,146 @@ export default function Contact() {
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-emerald-500/50 flex items-center justify-between text-slate-200 hover:text-white transition group"
+                  className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-slate-200 hover:text-white hover:border-emerald-600/50 transition group"
                 >
                   <div className="flex items-center gap-2.5">
-                    <LinkedinIcon className="w-4 h-4 text-cyan-400" />
-                    <span>Smriti Dahal on LinkedIn</span>
+                    <LinkedinIcon className="w-4 h-4 text-emerald-400" />
+                    <span>LinkedIn Profile</span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition" />
+                  <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition" />
                 </a>
               </div>
 
-              {/* Webmail Quick Launch Buttons */}
-              <div className="space-y-1.5 pt-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">One-Click Webmail Compose:</span>
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                  <button
-                    onClick={() => openWebmail('gmail')}
-                    className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-red-500/40 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
+              {/* Direct Mail Providers */}
+              <div className="pt-2">
+                <div className="text-[11px] text-slate-400 mb-2">Or compose via webmail:</div>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}&su=PSW%20Placement%20Inquiry`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-red-500/50 hover:bg-red-950/20 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
                   >
                     <span className="text-red-400 font-bold">G</span>
                     <span>Open in Gmail</span>
-                  </button>
-                  <button
-                    onClick={() => openWebmail('outlook')}
-                    className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/40 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
+                  </a>
+                  <a
+                    href={`https://outlook.live.com/mail/0/deeplink/compose?to=${personalInfo.email}&subject=PSW%20Placement%20Inquiry`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/50 hover:bg-blue-950/20 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5"
                   >
                     <span className="text-blue-400 font-bold">O</span>
                     <span>Open in Outlook</span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Interactive Email Dispatch Form */}
+            {/* FormSubmit Interactive Dispatch Form */}
             <div className="lg:col-span-7">
-              <form onSubmit={handleSendEmail} className="space-y-3.5 text-xs font-mono">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {submitted ? (
+                <div className="p-8 rounded-2xl bg-emerald-950/60 border border-emerald-800 text-center space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white">Inquiry Dispatched!</h3>
+                  <p className="text-xs text-slate-300 max-w-sm mx-auto">
+                    Thank you! Your message has been sent directly to Smriti Dahal's inbox.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="text-xs text-emerald-400 hover:text-emerald-300 underline underline-offset-2 cursor-pointer"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form
+                  action="https://formsubmit.co/3a7f3a3254ca1ae0ac55ae3aebe2d7dd"
+                  method="POST"
+                  onSubmit={() => {
+                    setTimeout(() => setSubmitted(true), 400);
+                  }}
+                  className="space-y-3.5 text-xs"
+                >
+                  {/* FormSubmit Configuration */}
+                  <input type="hidden" name="_subject" value="New PSW Portfolio Inquiry — Smriti Dahal" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="text" name="_honey" style={{ display: 'none' }} />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Your Name / Facility</label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="e.g. Director of Care / Nurse Manager"
+                        required
+                        className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Your Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="e.g. care@victoriamanor.ca"
+                        required
+                        className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label className="block text-slate-400 text-[10px] uppercase mb-1">Your Name / Facility</label>
+                    <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Inquiry Purpose</label>
+                    <select
+                      name="inquiry_type"
+                      className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-200 focus:outline-none focus:border-emerald-500"
+                    >
+                      <option>Long-Term Care Facility Staffing</option>
+                      <option>Sub-Acute / Hospital Rehabilitation Placement</option>
+                      <option>Community Healthcare Coordination</option>
+                      <option>General Professional Inquiry</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Subject</label>
                     <input
                       type="text"
-                      placeholder="e.g. Director of Care / Nurse Manager"
+                      name="subject"
+                      placeholder="e.g. PSW Opportunity / Schedule Inquiry"
                       required
-                      value={formData.senderName}
-                      onChange={(e) => setFormData({ ...formData, senderName: e.target.value })}
                       className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-slate-400 text-[10px] uppercase mb-1">Your Email</label>
-                    <input
-                      type="email"
-                      placeholder="e.g. care@victoriamanor.ca"
+                    <label className="block text-slate-400 text-[10px] uppercase mb-1 font-semibold">Message</label>
+                    <textarea
+                      name="message"
+                      rows="4"
+                      placeholder="Write your message here regarding shift schedules, facility requirements, or interview requests..."
                       required
-                      value={formData.senderEmail}
-                      onChange={(e) => setFormData({ ...formData, senderEmail: e.target.value })}
-                      className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
-                    />
+                      className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500 resize-none"
+                    ></textarea>
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-slate-400 text-[10px] uppercase mb-1">Inquiry Purpose</label>
-                  <select
-                    value={formData.facilityOrType}
-                    onChange={(e) => setFormData({ ...formData, facilityOrType: e.target.value })}
-                    className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-200 focus:outline-none focus:border-emerald-500"
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white text-xs font-bold rounded-xl transition shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <option>Long-Term Care Facility Staffing</option>
-                    <option>Sub-Acute / Hospital Rehabilitation Placement</option>
-                    <option>Community Healthcare Coordination</option>
-                    <option>General Professional Inquiry</option>
-                  </select>
-                </div>
+                    <Send className="w-4 h-4" />
+                    <span>Send Direct Message to Smriti</span>
+                  </button>
 
-                <div>
-                  <label className="block text-slate-400 text-[10px] uppercase mb-1">Subject</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. PSW Opportunity / Schedule Inquiry"
-                    required
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-slate-400 text-[10px] uppercase mb-1">Message</label>
-                  <textarea
-                    rows="4"
-                    placeholder="Write your message here regarding shift schedules, facility requirements, or interview requests..."
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-white focus:outline-none focus:border-emerald-500"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white text-xs font-bold rounded-xl transition shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Send Direct Email to Smriti</span>
-                </button>
-
-                {sentSuccess && (
-                  <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 text-emerald-300 text-xs flex items-center gap-2 animate-fadeIn">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>Your email composer has opened! You can review and click Send directly.</span>
-                  </div>
-                )}
-              </form>
+                  <p className="text-[10px] text-slate-500 text-center">
+                    Dispatched securely via FormSubmit directly to Smriti Dahal's inbox
+                  </p>
+                </form>
+              )}
             </div>
 
           </div>
