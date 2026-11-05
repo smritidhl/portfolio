@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * EkgWaveBackground - Interactive Healthcare & Cardiac Telemetry Field
+ * EkgWaveBackground - Slow, Calming, Bio-Luminescent Healthcare Field
  * Features:
- * - Animated rhythmic EKG Lifeline (P-Q-R-S-T cardiac cycle)
- * - Mouse-reactive hemodynamic wave warping
- * - Arterial pulse ripples & ultrasound shockwaves on hover/click
- * - Floating healthcare vitality nodes & medical cross markers
- * - Interactive Telemetry HUD tracking cardiac rhythm & vitals at cursor
+ * - Slow, graceful EKG cardiac rhythm (P-Q-R-S-T wave) with relaxing pacing
+ * - Hemodynamic mouse-reactive wave flexion (smoothed & gentle)
+ * - Floating medical crosses (+) and bio-vitality nodes drifting peacefully
+ * - Smooth arterial pulse ripples on hover/click
+ * - Interactive Telemetry HUD displaying live vitals at cursor
  */
 export default function EkgWaveBackground() {
   const canvasRef = useRef(null);
@@ -21,7 +21,6 @@ export default function EkgWaveBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Mouse state with smooth interpolation
     const mouse = {
       x: -1000,
       y: -1000,
@@ -33,41 +32,41 @@ export default function EkgWaveBackground() {
       active: false,
     };
 
-    // Heartbeat BPM & hemodynamic state (reacts dynamically to mouse speed)
-    let baseBpm = 72;
-    let currentBpm = 72;
+    let baseBpm = 68; // Relaxing resting heart rate
+    let currentBpm = 68;
     let heartPulseScale = 1;
 
     // Floating healthcare vitality nodes
     const nodeLabels = [
+      'Victoria Manor LTC',
+      'Fleming GPA: 3.74',
+      'CPR-C / AED Active',
+      'BSO-DOS Tracking',
+      'Hoyer Lift Safe',
+      'IPAC Level 1',
+      'VSC Cleared',
+      'Gentle Care (GPA)',
       'SpO₂: 99%',
-      'BP: 118/76',
-      'Normal Sinus',
-      'IPAC Protocol',
-      'GPA Dignity',
-      'CPR-HCP',
-      'Safe Transfers',
-      'Holistic Care'
+      'Normal Sinus'
     ];
 
     const vitalityNodes = [];
-    const nodeCount = 36;
+    const nodeCount = 32;
     for (let i = 0; i < nodeCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
       vitalityNodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        size: Math.random() * 2.5 + 1.2,
-        isCross: i % 4 === 0, // 25% of nodes are subtle medical crosses (+)
+        // Slower, graceful floating velocities
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        size: Math.random() * 2.2 + 1.2,
+        isCross: i % 3 === 0, // Medical crosses (+)
         label: i < nodeLabels.length ? nodeLabels[i] : null,
         pulseOffset: Math.random() * Math.PI * 2,
-        baseAlpha: Math.random() * 0.25 + 0.15,
+        baseAlpha: Math.random() * 0.22 + 0.12,
       });
     }
 
-    // Arterial pulse ripples
     const ripples = [];
 
     const handleResize = () => {
@@ -83,7 +82,7 @@ export default function EkgWaveBackground() {
       const dx = newX - (mouse.lastX === -1000 ? newX : mouse.lastX);
       const dy = newY - (mouse.lastY === -1000 ? newY : mouse.lastY);
       const dist = Math.hypot(dx, dy);
-      mouse.speed = Math.min(dist * 0.4, 18);
+      mouse.speed = Math.min(dist * 0.25, 12);
 
       mouse.targetX = newX;
       mouse.targetY = newY;
@@ -91,17 +90,17 @@ export default function EkgWaveBackground() {
       mouse.lastY = newY;
       mouse.active = true;
 
-      // Accelerate heart rate slightly on active mouse movement (72 -> up to 88 bpm)
-      currentBpm = Math.min(88, baseBpm + mouse.speed * 0.85);
+      // Gentle BPM increase on mouse movement
+      currentBpm = Math.min(78, baseBpm + mouse.speed * 0.5);
 
-      if (dist > 12 && ripples.length < 5) {
+      if (dist > 16 && ripples.length < 4) {
         ripples.push({
           x: newX,
           y: newY,
           radius: 6,
-          maxRadius: 180,
-          alpha: 0.45,
-          speed: 2.2,
+          maxRadius: 190,
+          alpha: 0.38,
+          speed: 1.1, // Slower, peaceful expansion
         });
       }
     };
@@ -113,11 +112,10 @@ export default function EkgWaveBackground() {
         y: e.clientY - rect.top,
         radius: 4,
         maxRadius: 260,
-        alpha: 0.7,
-        speed: 3.2,
+        alpha: 0.6,
+        speed: 1.6,
       });
-      // Heartbeat pulse thump
-      heartPulseScale = 1.4;
+      heartPulseScale = 1.28;
     };
 
     const handleMouseLeave = () => {
@@ -137,27 +135,26 @@ export default function EkgWaveBackground() {
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
-      time += 0.02;
+      time += 0.012; // Slower time step
 
       // Smooth mouse interpolation
-      mouse.x += (mouse.targetX - mouse.x) * 0.12;
-      mouse.y += (mouse.targetY - mouse.y) * 0.12;
-      mouse.speed *= 0.94;
-      currentBpm += (baseBpm - currentBpm) * 0.02;
-      heartPulseScale += (1.0 - heartPulseScale) * 0.08;
+      mouse.x += (mouse.targetX - mouse.x) * 0.08;
+      mouse.y += (mouse.targetY - mouse.y) * 0.08;
+      mouse.speed *= 0.95;
+      currentBpm += (baseBpm - currentBpm) * 0.015;
+      heartPulseScale += (1.0 - heartPulseScale) * 0.05;
 
-      // 1. Subtle Healthcare Dot Matrix Grid
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.035)';
-      const spacing = 36;
+      // 1. Subtle Healthcare Matrix Grid Dots
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.03)';
+      const spacing = 38;
       for (let x = 0; x < width; x += spacing) {
         for (let y = 0; y < height; y += spacing) {
           const dToMouse = Math.hypot(x - mouse.x, y - mouse.y);
-          if (mouse.active && dToMouse < 180) {
-            // Brighten grid dots near mouse
-            const glow = (1 - dToMouse / 180) * 0.18;
-            ctx.fillStyle = `rgba(16, 185, 129, ${0.035 + glow})`;
+          if (mouse.active && dToMouse < 200) {
+            const glow = (1 - dToMouse / 200) * 0.14;
+            ctx.fillStyle = `rgba(16, 185, 129, ${0.03 + glow})`;
           } else {
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.035)';
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.03)';
           }
           ctx.beginPath();
           ctx.arc(x, y, 1, 0, Math.PI * 2);
@@ -165,27 +162,27 @@ export default function EkgWaveBackground() {
         }
       }
 
-      // 2. Mouse Healing Aura Glow
+      // 2. Mouse Healing Aura
       if (mouse.active && mouse.x > 0 && mouse.x < width) {
-        const aura = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 220);
-        aura.addColorStop(0, 'rgba(16, 185, 129, 0.12)');
-        aura.addColorStop(0.5, 'rgba(20, 184, 166, 0.05)');
+        const aura = ctx.createRadialGradient(mouse.x, mouse.y, 8, mouse.x, mouse.y, 240);
+        aura.addColorStop(0, 'rgba(16, 185, 129, 0.10)');
+        aura.addColorStop(0.5, 'rgba(20, 184, 166, 0.04)');
         aura.addColorStop(1, 'rgba(16, 185, 129, 0)');
         ctx.fillStyle = aura;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 220, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 240, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // 3. Arterial Pulse Shockwave Ripples (Ultrasound echo effect)
+      // 3. Slow Arterial Pulse Ripples
       for (let r = ripples.length - 1; r >= 0; r--) {
         const rip = ripples[r];
         rip.radius += rip.speed;
-        rip.alpha *= 0.97;
+        rip.alpha *= 0.985; // Slower fade
 
         ctx.beginPath();
         ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(16, 185, 129, ${rip.alpha * 0.35})`;
+        ctx.strokeStyle = `rgba(16, 185, 129, ${rip.alpha * 0.32})`;
         ctx.lineWidth = 1.2;
         ctx.stroke();
 
@@ -194,23 +191,23 @@ export default function EkgWaveBackground() {
         }
       }
 
-      // 4. Primary & Secondary EKG Cardiac Waves with Hemodynamic Mouse Warping
+      // 4. Primary & Secondary EKG Waves (Slower & Gentle)
       const waveLayers = [
         {
           name: 'Primary EKG Lifeline',
-          baseYRatio: 0.42,
-          stroke: 'rgba(16, 185, 129, 0.42)',
-          glowStroke: 'rgba(52, 211, 153, 0.25)',
+          baseYRatio: 0.45,
+          stroke: 'rgba(16, 185, 129, 0.38)',
           lineWidth: 1.8,
-          cycleLength: 420,
+          glow: true,
+          cycleLength: 460,
         },
         {
           name: 'SpO2 Plethysmograph Wave',
-          baseYRatio: 0.65,
-          stroke: 'rgba(20, 184, 166, 0.22)',
-          glowStroke: 'transparent',
+          baseYRatio: 0.70,
+          stroke: 'rgba(20, 184, 166, 0.18)',
           lineWidth: 1.2,
-          cycleLength: 320,
+          glow: false,
+          cycleLength: 360,
         }
       ];
 
@@ -220,9 +217,9 @@ export default function EkgWaveBackground() {
         ctx.strokeStyle = layer.stroke;
         ctx.lineWidth = layer.lineWidth;
 
-        if (layer.glowStroke !== 'transparent') {
-          ctx.shadowColor = 'rgba(16, 185, 129, 0.5)';
-          ctx.shadowBlur = 8;
+        if (layer.glow) {
+          ctx.shadowColor = 'rgba(16, 185, 129, 0.4)';
+          ctx.shadowBlur = 6;
         } else {
           ctx.shadowBlur = 0;
         }
@@ -231,43 +228,36 @@ export default function EkgWaveBackground() {
           const cycle = ((x + offset) % layer.cycleLength);
           let dy = 0;
 
-          // Realistic P-Q-R-S-T Cardiac Cycle Form
-          if (cycle > 90 && cycle < 110) {
-            // P-Wave (atrial depolarization)
-            dy = -10 * Math.sin(((cycle - 90) / 20) * Math.PI);
-          } else if (cycle >= 125 && cycle < 133) {
-            // Q-Wave (slight downward dip)
-            dy = 12 * Math.sin(((cycle - 125) / 8) * Math.PI);
-          } else if (cycle >= 133 && cycle < 147) {
-            // R-Wave (dominant ventricular spike)
-            dy = -68 * heartPulseScale * Math.sin(((cycle - 133) / 14) * Math.PI);
-          } else if (cycle >= 147 && cycle < 155) {
-            // S-Wave (downward dip)
-            dy = 18 * Math.sin(((cycle - 147) / 8) * Math.PI);
-          } else if (cycle >= 180 && cycle < 215) {
-            // T-Wave (ventricular repolarization)
-            dy = -14 * Math.sin(((cycle - 180) / 35) * Math.PI);
+          // Anatomical P-Q-R-S-T wave curve
+          if (cycle > 90 && cycle < 114) {
+            dy = -8 * Math.sin(((cycle - 90) / 24) * Math.PI);
+          } else if (cycle >= 126 && cycle < 134) {
+            dy = 10 * Math.sin(((cycle - 126) / 8) * Math.PI);
+          } else if (cycle >= 134 && cycle < 150) {
+            dy = -62 * heartPulseScale * Math.sin(((cycle - 134) / 16) * Math.PI);
+          } else if (cycle >= 150 && cycle < 158) {
+            dy = 16 * Math.sin(((cycle - 150) / 8) * Math.PI);
+          } else if (cycle >= 182 && cycle < 220) {
+            dy = -12 * Math.sin(((cycle - 182) / 38) * Math.PI);
           }
 
           let y = baseY + dy;
 
-          // Hemodynamic Mouse Warp: EKG flexes toward cursor as you hover!
+          // Smooth hemodynamic mouse warp
           if (mouse.active && mouse.x > 0) {
             const dxToMouse = x - mouse.x;
-            const distYToMouse = baseY - mouse.y;
-            const gaussianWeight = Math.exp(-(dxToMouse * dxToMouse) / 24000); // 160px spread
-            const pull = (mouse.y - baseY) * gaussianWeight * 0.35;
-            const pulseThrum = Math.sin(dxToMouse * 0.04 - time * 0.08) * 6 * gaussianWeight;
+            const gaussianWeight = Math.exp(-(dxToMouse * dxToMouse) / 32000); // Broader, gentler curve
+            const pull = (mouse.y - baseY) * gaussianWeight * 0.28;
+            const pulseThrum = Math.sin(dxToMouse * 0.03 - time * 0.04) * 4 * gaussianWeight;
             y += pull + pulseThrum;
           }
 
-          // Ripples interaction
           for (let r = 0; r < ripples.length; r++) {
             const rip = ripples[r];
             const dRip = Math.abs(Math.hypot(x - rip.x, baseY - rip.y) - rip.radius);
-            if (dRip < 36) {
-              const weight = (1 - dRip / 36) * rip.alpha;
-              y += Math.sin(dRip * 0.16 - time * 0.1) * 8 * weight;
+            if (dRip < 34) {
+              const weight = (1 - dRip / 34) * rip.alpha;
+              y += Math.sin(dRip * 0.12 - time * 0.06) * 6 * weight;
             }
           }
 
@@ -279,31 +269,30 @@ export default function EkgWaveBackground() {
 
       ctx.shadowBlur = 0;
 
-      // 5. Floating Vitality Nodes & Medical Crosses (+)
+      // 5. Floating Medical Crosses (+) & Vitality Nodes (Slow drifting)
       const nearestToMouse = [];
 
       vitalityNodes.forEach((node) => {
         node.x += node.vx;
         node.y += node.vy;
 
-        // Wrap around borders
         if (node.x < 0) node.x = width;
         if (node.x > width) node.x = 0;
         if (node.y < 0) node.y = height;
         if (node.y > height) node.y = 0;
 
         const distToMouse = Math.hypot(node.x - mouse.x, node.y - mouse.y);
-        if (mouse.active && distToMouse < 220) {
+        if (mouse.active && distToMouse < 210) {
           nearestToMouse.push({ node, dist: distToMouse });
         }
 
-        const pulse = Math.sin(time * 1.5 + node.pulseOffset) * 0.15;
+        const pulse = Math.sin(time + node.pulseOffset) * 0.12;
         const alpha = node.baseAlpha + pulse;
 
         if (node.isCross) {
           // Render subtle medical cross (+)
-          ctx.strokeStyle = `rgba(16, 185, 129, ${alpha * 1.3})`;
-          ctx.lineWidth = 1.2;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${alpha * 1.35})`;
+          ctx.lineWidth = 1.3;
           const len = 4.5;
           ctx.beginPath();
           ctx.moveTo(node.x - len, node.y);
@@ -312,7 +301,6 @@ export default function EkgWaveBackground() {
           ctx.lineTo(node.x, node.y + len);
           ctx.stroke();
         } else {
-          // Circular vital node
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(20, 184, 166, ${alpha})`;
@@ -323,11 +311,11 @@ export default function EkgWaveBackground() {
       // 6. Cardiac Telemetry Lead Connections to Cursor
       if (mouse.active && mouse.x > 0 && mouse.x < width) {
         nearestToMouse.sort((a, b) => a.dist - b.dist);
-        const leads = nearestToMouse.slice(0, 4);
+        const leads = nearestToMouse.slice(0, 3);
 
         leads.forEach((item) => {
           const n = item.node;
-          const leadAlpha = (1 - item.dist / 220) * 0.45;
+          const leadAlpha = (1 - item.dist / 210) * 0.42;
 
           ctx.beginPath();
           ctx.moveTo(mouse.x, mouse.y);
@@ -336,13 +324,11 @@ export default function EkgWaveBackground() {
           ctx.lineWidth = 1;
           ctx.stroke();
 
-          // Highlight connected node
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.size + 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(52, 211, 153, ${leadAlpha * 1.6})`;
+          ctx.fillStyle = `rgba(52, 211, 153, ${leadAlpha * 1.5})`;
           ctx.fill();
 
-          // If node has a clinical label, render it gently
           if (n.label) {
             ctx.fillStyle = `rgba(167, 243, 208, ${leadAlpha * 1.8})`;
             ctx.font = '10px monospace';
@@ -350,35 +336,33 @@ export default function EkgWaveBackground() {
           }
         });
 
-        // 7. Interactive Clinical Telemetry HUD at Cursor
+        // 7. Clinical Telemetry HUD at Cursor
         const hudX = mouse.x + 18;
         const hudY = mouse.y - 28;
 
-        if (hudX < width - 170 && hudY > 30) {
-          // HUD Box
-          ctx.fillStyle = 'rgba(7, 11, 19, 0.88)';
+        if (hudX < width - 180 && hudY > 30) {
+          ctx.fillStyle = 'rgba(7, 11, 19, 0.90)';
           ctx.strokeStyle = 'rgba(16, 185, 129, 0.35)';
           ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.roundRect(hudX, hudY, 150, 48, 8);
+          ctx.roundRect(hudX, hudY, 155, 48, 8);
           ctx.fill();
           ctx.stroke();
 
-          // Heart icon + Status
           ctx.fillStyle = '#34d399';
           ctx.font = 'bold 10px monospace';
           ctx.fillText(`❤️ Sinus Rhythm • ${Math.round(currentBpm)} BPM`, hudX + 10, hudY + 16);
 
-          // Sub-vitals
           ctx.fillStyle = '#94a3b8';
           ctx.font = '9px monospace';
           ctx.fillText(`SpO₂: 99%  •  BP: 118/76`, hudX + 10, hudY + 30);
           ctx.fillStyle = '#10b981';
-          ctx.fillText(`Lead: ${leads.length} Vital Nodes Active`, hudX + 10, hudY + 41);
+          ctx.fillText(`Victoria Manor LTC • Lead Active`, hudX + 10, hudY + 41);
         }
       }
 
-      offset += (currentBpm / 60) * 1.1;
+      // Slower, peaceful offset increment
+      offset += (currentBpm / 60) * 0.42;
       animationFrameId = requestAnimationFrame(render);
     };
 

@@ -29,7 +29,7 @@ export default function Navbar({ onOpenResume }) {
           <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
           <a href="#experience" className="hover:text-emerald-400 transition-colors">Clinical Experience</a>
           <a href="#skills" className="hover:text-emerald-400 transition-colors">Competencies</a>
-          <a href="#credentials" className="hover:text-emerald-400 transition-colors">Certifications</a>
+          <a href="#certificates" className="hover:text-emerald-400 transition-colors">Certifications</a>
           <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
         </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
 import { ArrowUp, Mail } from 'lucide-react';
+import { LinkedinIcon } from './SocialIcons';
 
 export default function Footer({ onOpenResume }) {
   const scrollToTop = () => {
@@ -15,7 +16,7 @@ export default function Footer({ onOpenResume }) {
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 p-[1.5px]">
               <div className="w-full h-full bg-[#0b0f19] rounded-[9px] flex items-center justify-center font-mono font-bold text-sm text-emerald-300">
-                PSW
+                SD
               </div>
             </div>
             <div>
@@ -23,7 +24,7 @@ export default function Footer({ onOpenResume }) {
                 {personalInfo.name}
               </span>
               <span className="text-xs text-slate-400 font-mono">
-                Personal Support Worker • Ontario • CPR/HCP
+                Personal Support Worker • Victoria Manor LTC • Lindsay, ON
               </span>
             </div>
           </div>
@@ -32,7 +33,7 @@ export default function Footer({ onOpenResume }) {
             <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
             <a href="#experience" className="hover:text-emerald-400 transition-colors">Experience</a>
             <a href="#skills" className="hover:text-emerald-400 transition-colors">Competencies</a>
-            <a href="#credentials" className="hover:text-emerald-400 transition-colors">Certifications</a>
+            <a href="#certificates" className="hover:text-emerald-400 transition-colors">Certificates</a>
             <button onClick={onOpenResume} className="hover:text-emerald-400 transition-colors">
               Resume Preview
             </button>
@@ -53,7 +54,16 @@ export default function Footer({ onOpenResume }) {
             © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-400 hover:text-cyan-400 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="w-4 h-4" />
+            </a>
             <a
               href={`mailto:${personalInfo.email}`}
               className="text-slate-400 hover:text-emerald-400 transition-colors"
