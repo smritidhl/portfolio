@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo, keyStats } from '../data/portfolioData';
-import { ArrowRight, Award, FileText, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap } from 'lucide-react';
+import { ArrowRight, Award, FileText, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap, CheckCircle2 } from 'lucide-react';
 
 export default function Hero({ onOpenResume }) {
   return (
@@ -15,7 +15,7 @@ export default function Hero({ onOpenResume }) {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Top Pill / Status Tag */}
-            <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300 shadow-sm backdrop-blur-sm">
+            <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs text-slate-300 shadow-sm backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="text-emerald-400 font-bold">Personal Support Worker</span>
               <span className="text-slate-600">•</span>
@@ -43,7 +43,7 @@ export default function Hero({ onOpenResume }) {
             </p>
 
             {/* Location & Clearances */}
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
               <div className="flex items-center gap-1.5 text-emerald-400">
                 <MapPin className="w-4 h-4" />
                 <span>{personalInfo.location}</span>
@@ -81,45 +81,45 @@ export default function Hero({ onOpenResume }) {
               <button
                 type="button"
                 onClick={onOpenResume}
-                className="px-4 py-2.5 text-xs font-mono text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2.5 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span>Curriculum Vitae</span>
+                <span>Resume Dossier</span>
               </button>
             </div>
 
-            {/* 4 Stats Grid */}
-            <div className="pt-4 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {/* Metric Highlights Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/30 transition-all">
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <Building2 className="w-4 h-4 text-emerald-400" />
-                  <span className="text-base font-extrabold font-mono text-white">LTC</span>
+                  <span className="text-base font-extrabold text-white">166+</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-mono block leading-tight">Victoria Manor Active</span>
+                <span className="text-[11px] text-slate-400 block leading-tight">Residents Supported</span>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-teal-500/30 transition-all">
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <GraduationCap className="w-4 h-4 text-teal-400" />
-                  <span className="text-base font-extrabold font-mono text-white">3.74</span>
+                  <span className="text-base font-extrabold text-white">3.737</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-mono block leading-tight">Fleming College GPA</span>
+                <span className="text-[11px] text-slate-400 block leading-tight">Fleming College GPA</span>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/30 transition-all">
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <ShieldCheck className="w-4 h-4 text-cyan-400" />
-                  <span className="text-base font-extrabold font-mono text-white">100%</span>
+                  <span className="text-base font-extrabold text-white">100%</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-mono block leading-tight">VSC & Safety Cleared</span>
+                <span className="text-[11px] text-slate-400 block leading-tight">VSC & Safety Cleared</span>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/30 transition-all">
                 <div className="flex items-center gap-1.5 mb-0.5">
                   <HeartPulse className="w-4 h-4 text-emerald-400" />
-                  <span className="text-base font-extrabold font-mono text-white">CPR-C</span>
+                  <span className="text-base font-extrabold text-white">CPR-C</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-mono block leading-tight">Red Cross & GPA Cert</span>
+                <span className="text-[11px] text-slate-400 block leading-tight">Red Cross & GPA Cert</span>
               </div>
             </div>
 
@@ -150,11 +150,11 @@ export default function Hero({ onOpenResume }) {
 
                   {/* Top Floating Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-emerald-500/40 text-[10px] font-mono font-bold text-emerald-300 flex items-center gap-1 shadow-md">
+                    <span className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                       <span>Verified PSW</span>
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-teal-500/40 text-[10px] font-mono text-teal-300 shadow-md">
+                    <span className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-teal-500/40 text-[10px] text-teal-300 shadow-md">
                       Fleming Graduate
                     </span>
                   </div>
@@ -163,12 +163,12 @@ export default function Hero({ onOpenResume }) {
                   <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-800 space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold text-white">Smriti Dahal</span>
-                      <span className="text-[10px] font-mono text-emerald-400">Active LTC Practice</span>
+                      <span className="text-[10px] text-emerald-400 font-semibold">Active LTC Practice</span>
                     </div>
-                    <div className="text-[11px] text-slate-300 font-mono">
+                    <div className="text-[11px] text-slate-300">
                       Victoria Manor • Sir Sandford Fleming College
                     </div>
-                    <div className="flex items-center gap-2 pt-1 text-[10px] text-slate-400 font-mono">
+                    <div className="flex items-center gap-2 pt-1 text-[10px] text-slate-400">
                       <span>✓ CPR-C #105427452</span>
                       <span>•</span>
                       <span>✓ GPA #0148-6552-1518</span>
@@ -177,7 +177,7 @@ export default function Hero({ onOpenResume }) {
                 </div>
 
                 {/* Quick Care Snapshot Bar */}
-                <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+                <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
                   <span className="text-slate-300">Specialization:</span>
                   <span className="text-emerald-400 font-semibold">Long-Term Care & Dementia</span>
                 </div>
