@@ -43,7 +43,7 @@ export default function Navbar({ onOpenResume }) {
           className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-white transition-all flex items-center gap-2 text-xs font-semibold group cursor-pointer"
         >
           <FileText className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-          <span>Resume Preview</span>
+          <span>View Resume</span>
         </button>
 
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { personalInfo, keyStats } from '../data/portfolioData';
-import { ArrowRight, Award, FileText, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap, CheckCircle2 } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
+import { ArrowRight, Award, FileText, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap } from 'lucide-react';
 
 export default function Hero({ onOpenResume }) {
   return (
@@ -14,12 +14,14 @@ export default function Hero({ onOpenResume }) {
           {/* Left Column: Bio, Credentials & CTAs */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Top Pill / Status Tag */}
+            {/* Top Pill / Status Tag with Dean's List Highlight */}
             <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs text-slate-300 shadow-sm backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="text-emerald-400 font-bold">Personal Support Worker</span>
               <span className="text-slate-600">•</span>
-              <span className="text-teal-300">Victoria Manor LTC</span>
+              <span className="text-amber-300 font-semibold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-400" /> Dean's List Honoree
+              </span>
               <span className="text-slate-600">•</span>
               <span className="text-cyan-300">Fleming College (GPA: 3.737)</span>
             </div>
@@ -42,7 +44,7 @@ export default function Hero({ onOpenResume }) {
               {personalInfo.objective}
             </p>
 
-            {/* Location & Clearances */}
+            {/* Location & Academic Distinction Badges */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
               <div className="flex items-center gap-1.5 text-emerald-400">
                 <MapPin className="w-4 h-4" />
@@ -54,9 +56,9 @@ export default function Hero({ onOpenResume }) {
                 <span>Vulnerable Sector Checked</span>
               </div>
               <span className="text-slate-700">•</span>
-              <div className="flex items-center gap-1.5 text-cyan-300">
-                <Award className="w-4 h-4" />
-                <span>Academic Excellence Award</span>
+              <div className="flex items-center gap-1.5 text-amber-300 font-semibold bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/80">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>Dean's List & Academic Excellence Award</span>
               </div>
             </div>
 
@@ -81,14 +83,14 @@ export default function Hero({ onOpenResume }) {
               <button
                 type="button"
                 onClick={onOpenResume}
-                className="px-4 py-2.5 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <FileText className="w-3.5 h-3.5" />
-                <span>Resume Dossier</span>
+                <FileText className="w-3.5 h-3.5 text-emerald-400" />
+                <span>View Resume</span>
               </button>
             </div>
 
-            {/* Metric Highlights Grid */}
+            {/* Metric Highlights Grid with Dean's List Featured */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/30 transition-all">
                 <div className="flex items-center gap-1.5 mb-0.5">
@@ -98,12 +100,13 @@ export default function Hero({ onOpenResume }) {
                 <span className="text-[11px] text-slate-400 block leading-tight">Residents Supported</span>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-teal-500/30 transition-all">
+              {/* Dean's List Highlight Metric Card */}
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-amber-500/40 hover:border-amber-400 transition-all shadow-sm">
                 <div className="flex items-center gap-1.5 mb-0.5">
-                  <GraduationCap className="w-4 h-4 text-teal-400" />
-                  <span className="text-base font-extrabold text-white">3.737</span>
+                  <GraduationCap className="w-4 h-4 text-amber-400" />
+                  <span className="text-base font-extrabold text-amber-300">Dean's List</span>
                 </div>
-                <span className="text-[11px] text-slate-400 block leading-tight">Fleming College GPA</span>
+                <span className="text-[11px] text-slate-300 block leading-tight font-semibold">3.737 GPA • Top Distinction</span>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/30 transition-all">
@@ -154,8 +157,8 @@ export default function Hero({ onOpenResume }) {
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                       <span>Verified PSW</span>
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-teal-500/40 text-[10px] text-teal-300 shadow-md">
-                      Fleming Graduate
+                    <span className="px-2.5 py-1 rounded-full bg-amber-950/90 backdrop-blur-md border border-amber-500/50 text-[10px] font-bold text-amber-300 shadow-md flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-amber-400" /> Dean's List Honoree
                     </span>
                   </div>
 
@@ -166,7 +169,7 @@ export default function Hero({ onOpenResume }) {
                       <span className="text-[10px] text-emerald-400 font-semibold">Active LTC Practice</span>
                     </div>
                     <div className="text-[11px] text-slate-300">
-                      Victoria Manor • Sir Sandford Fleming College
+                      Victoria Manor • Fleming College (Dean's List)
                     </div>
                     <div className="flex items-center gap-2 pt-1 text-[10px] text-slate-400">
                       <span>✓ CPR-C #105427452</span>
