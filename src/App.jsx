@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import AboutMe from './components/AboutMe';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
+import ClinicalLiveCharting from './components/ClinicalLiveCharting';
 import EducationCertifications from './components/EducationCertifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -27,6 +28,7 @@ export default function App() {
         <AboutMe />
         <Experience />
         <Skills />
+        <ClinicalLiveCharting />
         <EducationCertifications />
         <Contact />
       </main>

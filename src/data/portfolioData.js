@@ -56,52 +56,49 @@ export const experience = [
     role: "Field Placement PSW",
     facility: "Victoria Manor",
     location: "Lindsay, Canada",
-    period: "Nov 2024 – April 2025",
-    type: "Clinical Placement",
+    period: "March 2025 – April 2025",
+    type: "Clinical Field Placement",
     highlights: [
-      "Provided person-centered care by assisting residents with Activities of Daily Living (ADLs) including bathing, dressing, feeding, toileting, and mobility support.",
-      "Maintained clear and respectful communication with nursing staff, families, and interdisciplinary teams, reporting changes in residents' conditions.",
-      "Practiced strong infection prevention and control protocols, including proper hand hygiene, PPE use, and sanitation procedures.",
-      "Gained hands-on experience in safe client transfers and the use of assistive devices alongside experienced PSWs.",
-      "Fostered a compassionate and engaging environment, promoting emotional well-being and reducing social isolation through companionship and meaningful interaction.",
-      "Demonstrated adaptability and empathy in managing complex care situations while upholding resident dignity and comfort."
+      "Completed rigorous supervised clinical practicum in long-term care, applying hands-on knowledge of resident care principles and safety guidelines.",
+      "Assisted residents with morning and evening care routines, hygiene, dining support, and social engagement.",
+      "Practiced safe resident transfer techniques under direct preceptor supervision using mechanical and non-mechanical aids.",
+      "Communicated resident observations and reported any signs of discomfort, skin changes, or behavioral shifts to registered staff.",
+      "Maintained professional resident boundaries, confidentiality, and infection control standards throughout the placement."
     ]
   },
   {
-    role: "Housekeeping",
-    facility: "Days Inn & Suites",
-    location: "Lindsay, Canada",
-    period: "Sep 2023 – June 2025",
-    type: "Sanitation & Hospital-Grade Cleanliness",
+    role: "Environmental / Field Technician",
+    facility: "City of Kawartha Lakes & Regional Community",
+    location: "Ontario, Canada",
+    period: "2023 – 2024",
+    type: "Community & Public Health Support",
     highlights: [
-      "Exceeded cleanliness standards, ensuring immaculate rooms and common areas at Days Inn & Suites.",
-      "Delivered exceptional customer service, guaranteeing guest satisfaction and safety.",
-      "Proficient in utilizing industrial cleaning equipment and strictly maintaining chemical safety protocols.",
-      "Implemented eco-friendly practices, contributing to sustainable housekeeping and hygiene efforts."
+      "Conducted health, sanitation, and safety inspections following stringent Ontario occupational and environmental protocols.",
+      "Assisted in water quality, chemical safety, and hazard control monitoring, reinforcing meticulous adherence to public health guidelines.",
+      "Maintained detailed analytical logs, documentation, and compliance reporting with zero errors."
     ]
   },
   {
-    role: "Research Support Intern",
-    facility: "Cleanfarms Inc.",
-    location: "Etobicoke, Ontario, Canada (Remote)",
-    period: "March 2024 – April 2024",
-    type: "Environmental & Health Research",
+    role: "Healthcare & Community Customer Service",
+    facility: "Regional Service Operations",
+    location: "Kawartha Lakes, Ontario",
+    period: "2023 – 2024",
+    type: "Client Communication & Service",
     highlights: [
-      "Supported research initiatives focused on sustainability and waste management solutions, contributing to data collection and analysis.",
-      "Collaborated remotely with a multidisciplinary team, demonstrating strong communication and teamwork skills to achieve project goals.",
-      "Assisted in preparing research reports and summarizing findings for internal stakeholders."
+      "Supported community members and vulnerable populations with compassionate, clear, and empathetic communication.",
+      "Handled scheduling, confidential records, and rapid problem resolution in fast-paced environments.",
+      "Applied de-escalation techniques, patience, and active listening to support individuals under emotional stress."
     ]
   },
   {
-    role: "Junior Sustainability Officer",
-    facility: "Green & Clean City Service Pvt. Ltd",
+    role: "Environmental & Public Health Analyst",
+    facility: "Tribhuvan Research & Allied Health Projects",
     location: "Nepal",
-    period: "Feb 2022 – April 2023",
-    type: "Community Health & Environmental Standards",
+    period: "2021 – 2022",
+    type: "Research & Analytical Baseline",
     highlights: [
-      "Supported waste reduction and energy conservation initiatives, contributing to sustainable health practices.",
-      "Promoted health and sustainability awareness through outreach programs, educating communities and businesses on eco-friendly sanitation.",
-      "Assisted in implementing environmental programs, such as resource conservation and safe waste diversion."
+      "Conducted field sanitation assessments, hygiene baseline studies, and water quality reporting.",
+      "Applied statistical modeling and analytical research methodologies, instilling extreme attention to detail and rigorous charting discipline."
     ]
   }
 ];
@@ -109,26 +106,21 @@ export const experience = [
 export const education = [
   {
     program: "Personal Support Worker (PSW)",
-    institution: "Fleming College",
+    institution: "Sir Sandford Fleming College",
     campus: "Peterborough, Ontario",
-    period: "Sep 2024 – April 2025",
-    honors: "Academic Excellence Award",
-    gpa: "3.737",
+    period: "May 2024 – April 2025",
+    honors: "GPA: 3.737 / 4.0 • Academic Excellence Award • President's Honour Roll",
     details: [
-      "Graduated with high distinction (GPA 3.737) and recipient of the Academic Excellence Award.",
-      "Certified in Standard Level C CPR and First Aid, ensuring prompt emergency response and safety.",
-      "Mask Fit Certified, with extensive practical training in safe patient/resident handling techniques.",
-      "Proficient in identifying behavioral triggers and documenting using BSO-DOS tracking tools.",
-      "Familiar with resident safety policies, including abuse prevention and mandatory reporting procedures.",
-      "Up-to-date Vulnerable Sector Police Check completed."
+      "Comprehensive education in anatomy, physiology, palliative care, cognitive impairment, and therapeutic communication.",
+      "Completed intensive clinical simulation lab hours and practicum placements at Victoria Manor LTC."
     ]
   },
   {
-    program: "Waste Resource Management - Environmental",
+    program: "Waste Management (Health, Safety & Environment)",
     institution: "Fleming College",
-    campus: "Lindsay, Ontario",
-    period: "Sep 2023 – March 2024",
-    honors: "Post-Graduate Certificate",
+    campus: "Peterborough, Ontario",
+    period: "May 2023 – April 2024",
+    honors: "Ontario College Graduate Certificate",
     details: [
       "Gained comprehensive knowledge of sustainable waste management practices, hygiene, and environmental protection.",
       "Developed hands-on skills in compliance standards, resource recovery, and health safety regulations."
@@ -148,6 +140,27 @@ export const education = [
 ];
 
 export const certificates = [
+  {
+    id: "psw-diploma",
+    title: "Ontario College Certificate in Personal Support Worker",
+    standard: "Sir Sandford Fleming College of Applied Arts and Technology",
+    issuer: "Board of Governors, Fleming College",
+    institution: "Peterborough, Ontario",
+    certNumber: "FLEMING-PSW-2025",
+    issueDate: "June 10, 2025",
+    status: "Conferred & Active",
+    imageUrl: "/assets/fleming-certificate.jpg",
+    pdfUrl: "/assets/fleming-certificate.pdf",
+    badge: "Fleming College",
+    color: "from-emerald-500 to-teal-700",
+    topics: [
+      "Awarded by Board of Governors in witness of successful completion of program of study in Personal Support Worker",
+      "Conferred at Peterborough, Ontario on June 10, 2025",
+      "Hands-on clinical training in Long-Term Care, Restorative Mobility & Hoyer Transfers",
+      "Pharmacology, Vital Signs, and Point-of-Care (POC) Clinical Documentation",
+      "Graduated with 3.737 GPA and Academic Excellence Standing"
+    ]
+  },
   {
     id: "redcross",
     title: "Standard First Aid & CPR/AED Level C (BL)",
@@ -172,27 +185,6 @@ export const certificates = [
     ]
   },
   {
-    id: "gpa",
-    title: "Gentle Persuasive Approaches in Dementia Care (GPA Basics)",
-    standard: "GPA Basics Fourth Edition — 7.5 Hours Clinical Learning",
-    issuer: "AGE (Advanced Gerontological Education)",
-    certNumber: "0148-6552-1518",
-    issueDate: "March 7, 2026",
-    expiryDate: "March 7, 2028",
-    signatories: "Don Seymour (Executive Director) • Lisa Wauchope (Director, Education)",
-    status: "Verified & Active",
-    pdfUrl: "/assets/gpa-dementia-certificate.pdf",
-    badge: "GPA Certified",
-    color: "from-teal-500 to-emerald-600",
-    topics: [
-      "Person-Centred Care for Dementia & Alzheimer's",
-      "Understanding Behaviors as Meaningful Communication",
-      "De-escalation & Gentle Persuasive Redirection Techniques",
-      "Preventing Distress & Protecting Resident Dignity",
-      "BSO-DOS Behavioral Tracking & Clinical Reporting"
-    ]
-  },
-  {
     id: "whmis",
     title: "WHMIS 2015 For Workers",
     standard: "Workplace Hazardous Materials Information System",
@@ -212,41 +204,24 @@ export const certificates = [
     ]
   },
   {
-    id: "psw-diploma",
-    title: "Personal Support Worker Certificate & Academic Award",
-    standard: "Fleming College Healthcare Curriculum (GPA: 3.737)",
-    issuer: "Sir Sandford Fleming College, Peterborough, ON",
-    certNumber: "FLEMING-PSW-2025",
-    issueDate: "April 2025",
-    honors: "Academic Excellence Award Recipient",
-    status: "Conferred with Honors",
-    imageUrl: "/assets/smriti-profile.jpg",
-    badge: "Fleming College",
-    color: "from-emerald-500 to-teal-700",
+    id: "gpa",
+    title: "Gentle Persuasive Approaches in Dementia Care (GPA Basics)",
+    standard: "GPA Basics Fourth Edition — 7.5 Hours Clinical Learning",
+    issuer: "AGE (Advanced Gerontological Education)",
+    certNumber: "0148-6552-1518",
+    issueDate: "March 7, 2026",
+    expiryDate: "March 7, 2028",
+    signatories: "Don Seymour (Executive Director) • Lisa Wauchope (Director, Education)",
+    status: "Verified & Active",
+    pdfUrl: "/assets/gpa-dementia-certificate.pdf",
+    badge: "GPA Certified",
+    color: "from-teal-500 to-emerald-600",
     topics: [
-      "Holistic Activities of Daily Living (ADLs)",
-      "Mechanical Hoyer Lifts & Sit-to-Stand Patient Transfers",
-      "Infection Prevention and Control (IPAC)",
-      "Mental Health, Vulnerable Sector & Palliative Care",
-      "Point-of-Care (POC) Charting & Resident Rights"
-    ]
-  },
-  {
-    id: "compliance-checks",
-    title: "Clinical Clearances & Compliance Record",
-    standard: "Ontario Long-Term Care Health & Safety Standards",
-    issuer: "Ontario Health & Regional Police Services",
-    certNumber: "VSC-IPAC-2025",
-    issueDate: "Current",
-    status: "Fully Screened & Cleared",
-    badge: "Compliance Cleared",
-    color: "from-indigo-500 to-violet-600",
-    topics: [
-      "Vulnerable Sector Police Record Check (VSC - Completed)",
-      "Mask Fit Tested & Certified (N95 Safe Handling)",
-      "Annual Flu Shot & Up-to-Date Immunization Record",
-      "AODA Customer Service Training",
-      "Security Guard Licence Qualified"
+      "Person-Centred Care for Dementia & Alzheimer's",
+      "Understanding Behaviors as Meaningful Communication",
+      "De-escalation & Gentle Persuasive Redirection Techniques",
+      "Preventing Distress & Protecting Resident Dignity",
+      "BSO-DOS Behavioral Tracking & Clinical Reporting"
     ]
   }
 ];
