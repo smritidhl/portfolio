@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { certificates } from '../data/portfolioData';
-import { Award, ShieldCheck, CheckCircle2, ExternalLink, Eye, Download, GraduationCap, X, Sparkles } from 'lucide-react';
+﻿import React, { useState } from "react";
+import { certificates } from "../data/portfolioData";
+import { Award, ShieldCheck, CheckCircle2, ExternalLink, Eye, GraduationCap, X } from "lucide-react";
 
 export default function EducationCertifications() {
   const [selectedCert, setSelectedCert] = useState(null);
 
-  const flemingCert = certificates.find((c) => c.id === 'psw-diploma') || certificates[0];
-  const deansListCert = certificates.find((c) => c.id === 'deans-list') || certificates[1];
-  const redCrossCert = certificates.find((c) => c.id === 'redcross') || certificates[2];
-  const whmisCert = certificates.find((c) => c.id === 'whmis') || certificates[3];
-  const gpaCert = certificates.find((c) => c.id === 'gpa') || certificates[4];
+  const flemingCert = certificates.find((c) => c.id === "psw-diploma") || certificates[0];
+  const deansListCert = certificates.find((c) => c.id === "deans-list") || certificates[1];
+  const redCrossCert = certificates.find((c) => c.id === "redcross") || certificates[2];
+  const whmisCert = certificates.find((c) => c.id === "whmis") || certificates[3];
+  const gpaCert = certificates.find((c) => c.id === "gpa") || certificates[4];
 
   return (
     <section id="certificates" className="py-20 border-t border-slate-800/80 bg-[#070b13]/80 relative">
@@ -19,10 +19,10 @@ export default function EducationCertifications() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-xs font-semibold text-emerald-400 mb-3 shadow-sm">
             <Award className="w-3.5 h-3.5" />
-            <span>Official Healthcare Licences & Honors</span>
+            <span>Official Healthcare Licences &amp; Honors</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Official Certificates & Academic Honors
+            Official Certificates &amp; Academic Honors
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 mt-2">
             Every credential is authenticated, active, and fully compliant with Ontario Ministry of Health and Long-Term Care standards.
@@ -35,12 +35,15 @@ export default function EducationCertifications() {
           {/* Card 1: Fleming College Ontario College Certificate */}
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-emerald-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
-              {/* Real Fleming Certificate Image Preview */}
-              <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[16/10] border border-slate-700 group-hover:border-emerald-500/40 transition shadow-inner">
+              {/* Real Fleming Certificate Image Preview (Protected View) */}
+              <div
+                onContextMenu={(e) => e.preventDefault()}
+                className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[16/10] border border-slate-700 group-hover:border-emerald-500/40 transition shadow-inner select-none"
+              >
                 <img
                   src="/assets/fleming-certificate.jpg"
                   alt="Sir Sandford Fleming College Certificate - Smriti Dahal"
-                  className="w-full h-full object-contain bg-white group-hover:scale-105 transition duration-500"
+                  className="w-full h-full object-contain bg-white group-hover:scale-105 transition duration-500 pointer-events-none"
                 />
                 <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px]">
                   <span className="font-bold text-white bg-emerald-950/95 px-2 py-0.5 rounded border border-emerald-800 flex items-center gap-1">
@@ -69,23 +72,15 @@ export default function EducationCertifications() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+            <div className="pt-4 border-t border-slate-800 mt-4">
               <button
+                type="button"
                 onClick={() => setSelectedCert(flemingCert)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group-hover:bg-slate-750"
               >
                 <Eye className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Inspect Certificate</span>
               </button>
-              <a
-                href="/assets/fleming-certificate.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-                title="Download Official PDF"
-              >
-                <Download className="w-3.5 h-3.5 text-emerald-400" />
-              </a>
             </div>
           </div>
 
@@ -93,7 +88,10 @@ export default function EducationCertifications() {
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-amber-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* Dean's List Visual Preview */}
-              <div className="relative rounded-xl overflow-hidden bg-white text-slate-900 p-4 aspect-[16/10] flex flex-col justify-between shadow-md border border-slate-200">
+              <div
+                onContextMenu={(e) => e.preventDefault()}
+                className="relative rounded-xl overflow-hidden bg-white text-slate-900 p-4 aspect-[16/10] flex flex-col justify-between shadow-md border border-slate-200 select-none"
+              >
                 <div className="flex items-center justify-between border-b border-amber-500/30 pb-2">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 font-black text-xs flex items-center justify-center shadow-sm">
@@ -101,7 +99,7 @@ export default function EducationCertifications() {
                     </div>
                     <div>
                       <div className="font-extrabold text-[11px] text-slate-900 leading-none">FLEMING COLLEGE</div>
-                      <div className="text-[8px] text-slate-500">School of Health & Community Services</div>
+                      <div className="text-[8px] text-slate-500">School of Health &amp; Community Services</div>
                     </div>
                   </div>
                   <span className="text-[8px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded-full border border-amber-300">
@@ -124,7 +122,7 @@ export default function EducationCertifications() {
               {/* Card Details */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-amber-400">School of Health & Community Services</span>
+                  <span className="text-xs font-bold text-amber-400">School of Health &amp; Community Services</span>
                   <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Dean's List Honoree</span>
@@ -137,23 +135,15 @@ export default function EducationCertifications() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+            <div className="pt-4 border-t border-slate-800 mt-4">
               <button
+                type="button"
                 onClick={() => setSelectedCert(deansListCert)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group-hover:bg-slate-750"
               >
                 <Eye className="w-3.5 h-3.5 text-amber-400" />
                 <span>Inspect Certificate</span>
               </button>
-              <a
-                href="/assets/deans-list-letter.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-                title="Download Official PDF Letter"
-              >
-                <Download className="w-3.5 h-3.5 text-amber-400" />
-              </a>
             </div>
           </div>
 
@@ -161,7 +151,10 @@ export default function EducationCertifications() {
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-red-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-red-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* Certificate Visual Preview */}
-              <div className="relative rounded-xl overflow-hidden bg-white text-slate-900 p-4 aspect-[16/10] flex flex-col justify-between shadow-md border border-slate-200">
+              <div
+                onContextMenu={(e) => e.preventDefault()}
+                className="relative rounded-xl overflow-hidden bg-white text-slate-900 p-4 aspect-[16/10] flex flex-col justify-between shadow-md border border-slate-200 select-none"
+              >
                 <div className="flex items-center justify-between border-b border-red-600/30 pb-2">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-full bg-red-600 flex items-center justify-center text-white font-black text-base shadow-sm">
@@ -178,7 +171,7 @@ export default function EducationCertifications() {
                 </div>
 
                 <div className="my-auto py-1 text-center">
-                  <div className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">Standard First Aid & CPR/AED</div>
+                  <div className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">Standard First Aid &amp; CPR/AED</div>
                   <div className="text-sm font-extrabold text-slate-900 mt-0.5">Smriti Dahal</div>
                   <div className="text-[9px] text-slate-600">CSA Std. Z1210-17 – Intermediate</div>
                 </div>
@@ -198,30 +191,22 @@ export default function EducationCertifications() {
                     <span>Verified Active</span>
                   </span>
                 </div>
-                <h3 className="font-bold text-white text-base">Standard First Aid & CPR/AED Level C</h3>
+                <h3 className="font-bold text-white text-base">Standard First Aid &amp; CPR/AED Level C</h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
                   Adult, child, and infant CPR with automated external defibrillator (AED) operation, vital checks, and airway emergency rescue.
                 </p>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+            <div className="pt-4 border-t border-slate-800 mt-4">
               <button
+                type="button"
                 onClick={() => setSelectedCert(redCrossCert)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group-hover:bg-slate-750"
               >
                 <Eye className="w-3.5 h-3.5 text-red-400" />
                 <span>Inspect Certificate</span>
               </button>
-              <a
-                href={redCrossCert.pdfUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-                title="Download Official PDF"
-              >
-                <Download className="w-3.5 h-3.5 text-red-400" />
-              </a>
             </div>
           </div>
 
@@ -229,11 +214,14 @@ export default function EducationCertifications() {
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-blue-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* Real WHMIS Certificate Image Preview */}
-              <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[16/10] border border-slate-700 group-hover:border-blue-500/40 transition">
+              <div
+                onContextMenu={(e) => e.preventDefault()}
+                className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[16/10] border border-slate-700 group-hover:border-blue-500/40 transition select-none"
+              >
                 <img
                   src="/assets/whmis-certificate.jpg"
                   alt="WHMIS 2015 for Workers - Smriti Dahal"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500 pointer-events-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                 <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px]">
@@ -249,7 +237,7 @@ export default function EducationCertifications() {
               {/* Card Details */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-blue-400">Workplace Safety & Prevention Services</span>
+                  <span className="text-xs font-bold text-blue-400">Workplace Safety &amp; Prevention Services</span>
                   <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Verified</span>
@@ -262,23 +250,15 @@ export default function EducationCertifications() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+            <div className="pt-4 border-t border-slate-800 mt-4">
               <button
+                type="button"
                 onClick={() => setSelectedCert(whmisCert)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group-hover:bg-slate-750"
               >
                 <Eye className="w-3.5 h-3.5 text-blue-400" />
                 <span>Inspect Certificate</span>
               </button>
-              <a
-                href="/assets/whmis-certificate.jpg"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-                title="View Full Image"
-              >
-                <Download className="w-3.5 h-3.5 text-blue-400" />
-              </a>
             </div>
           </div>
 
@@ -286,7 +266,10 @@ export default function EducationCertifications() {
           <div className="rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-teal-500/50 p-5 transition-all duration-300 shadow-xl hover:shadow-teal-950/30 flex flex-col justify-between group">
             <div className="space-y-4">
               {/* GPA Certificate Visual Canvas */}
-              <div className="relative rounded-xl overflow-hidden bg-gradient-to-tr from-[#041d1a] to-[#0a3530] text-white p-4 aspect-[16/10] flex flex-col justify-between border border-teal-500/40 shadow-md">
+              <div
+                onContextMenu={(e) => e.preventDefault()}
+                className="relative rounded-xl overflow-hidden bg-gradient-to-tr from-[#041d1a] to-[#0a3530] text-white p-4 aspect-[16/10] flex flex-col justify-between border border-teal-500/40 shadow-md select-none"
+              >
                 <div className="flex items-center justify-between border-b border-teal-500/30 pb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-teal-300 font-black text-sm tracking-widest">AGE</span>
@@ -300,7 +283,7 @@ export default function EducationCertifications() {
                 <div className="my-auto py-1 text-center">
                   <div className="text-[9px] text-teal-300 uppercase font-semibold">Gentle Persuasive Approaches</div>
                   <div className="text-sm font-extrabold text-white mt-0.5">Smriti Dahal</div>
-                  <div className="text-[9px] text-slate-300">Dementia Responsive Care & De-escalation</div>
+                  <div className="text-[9px] text-slate-300">Dementia Responsive Care &amp; De-escalation</div>
                 </div>
 
                 <div className="flex items-center justify-between border-t border-teal-500/30 pt-1.5 text-[9px] text-teal-200">
@@ -325,23 +308,15 @@ export default function EducationCertifications() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center gap-2 mt-4">
+            <div className="pt-4 border-t border-slate-800 mt-4">
               <button
+                type="button"
                 onClick={() => setSelectedCert(gpaCert)}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm group-hover:bg-slate-750"
               >
                 <Eye className="w-3.5 h-3.5 text-teal-400" />
                 <span>Inspect Certificate</span>
               </button>
-              <a
-                href={gpaCert.pdfUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-                title="Download Official PDF"
-              >
-                <Download className="w-3.5 h-3.5 text-teal-400" />
-              </a>
             </div>
           </div>
 
@@ -349,7 +324,7 @@ export default function EducationCertifications() {
 
       </div>
 
-      {/* Modal for Certificate Inspection */}
+      {/* Modal for Certificate Inspection (Protected View) */}
       {selectedCert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn">
           <div className="relative w-full max-w-2xl rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
@@ -358,9 +333,10 @@ export default function EducationCertifications() {
             <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-[#070b13]">
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Certificate Verification</span>
+                <span>Certificate Verification &amp; Inspection</span>
               </div>
               <button
+                type="button"
                 onClick={() => setSelectedCert(null)}
                 className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
               >
@@ -378,13 +354,16 @@ export default function EducationCertifications() {
                 <div className="text-slate-400 text-xs mt-0.5">{selectedCert.issuer}</div>
               </div>
 
-              {/* Certificate Image if available */}
+              {/* Certificate Image if available (Protected from save/drag) */}
               {selectedCert.imageUrl && (
-                <div className="rounded-xl overflow-hidden border border-slate-800 bg-black/60 max-h-80 flex items-center justify-center p-2">
+                <div
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="rounded-xl overflow-hidden border border-slate-800 bg-black/60 max-h-80 flex items-center justify-center p-2 select-none"
+                >
                   <img
                     src={selectedCert.imageUrl}
                     alt={selectedCert.title}
-                    className="max-h-76 w-auto object-contain rounded-lg"
+                    className="max-h-76 w-auto object-contain rounded-lg pointer-events-none"
                   />
                 </div>
               )}
@@ -393,7 +372,7 @@ export default function EducationCertifications() {
               <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
                 <div>
                   <span className="text-slate-500 block text-[10px] font-semibold">Certificate Number:</span>
-                  <span className="text-white font-bold">{selectedCert.certNumber || 'Official Conferred Record'}</span>
+                  <span className="text-white font-bold">{selectedCert.certNumber || "Official Conferred Record"}</span>
                 </div>
                 <div>
                   <span className="text-slate-500 block text-[10px] font-semibold">Standard / Curriculum:</span>
@@ -405,13 +384,13 @@ export default function EducationCertifications() {
                 </div>
                 <div>
                   <span className="text-slate-500 block text-[10px] font-semibold">Validity / Expiry:</span>
-                  <span className="text-teal-300 font-semibold">{selectedCert.expiryDate || 'Continuous Active'}</span>
+                  <span className="text-teal-300 font-semibold">{selectedCert.expiryDate || "Continuous Active"}</span>
                 </div>
               </div>
 
               {/* Competencies */}
               <div className="space-y-1.5">
-                <span className="text-slate-300 font-bold uppercase text-[10px]">Verified Credentials & Standards:</span>
+                <span className="text-slate-300 font-bold uppercase text-[10px]">Verified Credentials &amp; Standards:</span>
                 <ul className="space-y-1 text-slate-300">
                   {selectedCert.topics.map((t, i) => (
                     <li key={i} className="flex items-start gap-2 bg-slate-950/40 p-2 rounded-lg border border-slate-800/60">
@@ -422,27 +401,20 @@ export default function EducationCertifications() {
                 </ul>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center gap-3">
-                {selectedCert.pdfUrl && (
-                  <a
-                    href={selectedCert.pdfUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold flex items-center gap-1.5 transition text-xs shadow-md"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>View / Download Official PDF</span>
-                  </a>
-                )}
+              {/* Footer / Verification note */}
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-slate-400">
+                <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Institutional Record Authenticated</span>
+                </div>
                 {selectedCert.verificationUrl && (
                   <a
                     href={selectedCert.verificationUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center gap-1.5 transition text-xs"
+                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center gap-1.5 transition text-xs"
                   >
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3 h-3 text-emerald-400" />
                     <span>Red Cross Verification Portal</span>
                   </a>
                 )}
