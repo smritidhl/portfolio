@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowRight, Award, FileText, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap } from 'lucide-react';
+import { ArrowRight, Award, FileText, Download, MapPin, ShieldCheck, HeartPulse, Sparkles, Building2, GraduationCap } from 'lucide-react';
 
 export default function Hero({ onOpenResume }) {
   return (
@@ -80,13 +80,23 @@ export default function Hero({ onOpenResume }) {
                 <span>View All Certificates</span>
               </a>
 
+              <a
+                href="/assets/Smriti-Dahal-PSW-Resume.pdf"
+                download="Smriti-Dahal-PSW-Resume.pdf"
+                className="px-4 py-2.5 text-xs font-semibold text-emerald-300 hover:text-white bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-600/40 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                title="Download Official 2-Page Resume PDF"
+              >
+                <Download className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Download Resume (PDF)</span>
+              </a>
+
               <button
                 type="button"
                 onClick={onOpenResume}
                 className="px-4 py-2.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-slate-800 rounded-xl transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                <FileText className="w-3.5 h-3.5 text-emerald-400" />
-                <span>View Resume</span>
+                <FileText className="w-3.5 h-3.5 text-slate-400" />
+                <span>Preview</span>
               </button>
             </div>
 

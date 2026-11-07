@@ -1,115 +1,100 @@
-import React from 'react';
-import { personalInfo, experience, coreCompetencies, certificates, education } from '../data/portfolioData';
-import { X, Printer, GraduationCap } from 'lucide-react';
+﻿import React from "react";
+import { X, Download, ExternalLink, FileText } from "lucide-react";
 
 export default function ResumeModal({ onClose }) {
-  const handlePrint = () => {
-    window.print();
-  };
+  const resumeUrl = "/assets/Smriti-Dahal-PSW-Resume.pdf";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-5xl h-[90vh] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
         
-        {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#070b13]">
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
-            <GraduationCap className="w-4 h-4" />
-            <span>Curriculum Vitae Preview — Smriti Dahal, PSW</span>
+        {/* Top Control Bar */}
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-[#070b13]">
+          <div className="flex items-center gap-2.5 text-xs text-white">
+            <div className="w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-700/60 flex items-center justify-center text-emerald-400 shadow-sm">
+              <FileText className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="block font-bold text-white text-xs sm:text-sm leading-tight">
+                Smriti Dahal — Curriculum Vitae
+              </span>
+              <span className="text-[10px] text-emerald-400 font-mono block">
+                Official 2-Page Clinical PSW Resume (PDF)
+              </span>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrint}
-              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition text-xs font-medium flex items-center gap-1.5 cursor-pointer"
+            <a
+              href={resumeUrl}
+              download="Smriti-Dahal-PSW-Resume.pdf"
+              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-950/50 transition cursor-pointer"
+              title="Download Official PDF"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print / Save PDF</span>
-            </button>
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF</span>
+            </a>
+
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden sm:flex px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium items-center gap-1.5 transition"
+              title="Open full PDF in a new browser tab"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Open in New Tab</span>
+            </a>
+
             <button
+              type="button"
               onClick={onClose}
-              className="p-2 rounded-lg bg-slate-800 hover:bg-rose-950 text-slate-400 hover:text-rose-300 transition cursor-pointer"
+              className="p-1.5 rounded-xl bg-slate-800 hover:bg-rose-950 hover:text-rose-300 text-slate-400 transition cursor-pointer"
+              title="Close Preview"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Printable Resume Body */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-slate-200 text-xs">
-          
-          {/* Header */}
-          <div className="border-b border-slate-800 pb-4 text-center space-y-1">
-            <h1 className="text-2xl font-bold text-white font-sans">{personalInfo.name}</h1>
-            <div className="text-emerald-400 text-xs font-semibold">{personalInfo.title}</div>
-            <div className="text-slate-400 text-[11px]">
-              {personalInfo.location} • {personalInfo.email} • {personalInfo.linkedin}
-            </div>
-          </div>
-
-          {/* Career Objective */}
-          <div className="space-y-1">
-            <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Career Objective</div>
-            <p className="text-slate-300 leading-relaxed font-sans">{personalInfo.objective}</p>
-          </div>
-
-          {/* Core Competencies */}
-          <div className="space-y-1.5">
-            <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Core Competencies</div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-slate-300">
-              {coreCompetencies.map((c, idx) => (
-                <div key={idx} className="p-1.5 rounded bg-slate-950/60 border border-slate-800/80">
-                  • {c.title}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Relevant Experience */}
-          <div className="space-y-4">
-            <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Relevant Experience</div>
-            {experience.map((exp, idx) => (
-              <div key={idx} className="space-y-1 border-l-2 border-slate-800 pl-3">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white">
-                  <span>{exp.role} | {exp.facility} | {exp.location}</span>
-                  <span className="text-emerald-400 text-[11px]">{exp.period}</span>
-                </div>
-                <ul className="list-disc list-inside text-slate-300 space-y-0.5 font-sans">
-                  {exp.highlights.map((h, hIdx) => (
-                    <li key={hIdx}>{h}</li>
-                  ))}
-                </ul>
+        {/* Clean PDF Document Embed — Exactly 2 Pages, No Broken Layout */}
+        <div className="flex-1 w-full h-full bg-slate-950 relative overflow-hidden flex flex-col">
+          <object
+            data={`${resumeUrl}#toolbar=0&navpanes=0&view=FitH`}
+            type="application/pdf"
+            className="w-full h-full flex-1"
+          >
+            {/* Fallback iframe */}
+            <iframe
+              src={`${resumeUrl}#toolbar=0&navpanes=0&view=FitH`}
+              title="Smriti Dahal Resume Preview"
+              className="w-full h-full flex-1 border-0"
+            >
+              <div className="p-8 text-center text-slate-300 space-y-3 flex flex-col items-center justify-center h-full">
+                <FileText className="w-10 h-10 text-emerald-400 mb-2" />
+                <p className="text-sm">Smriti Dahal — 2-Page Official Resume</p>
+                <a
+                  href={resumeUrl}
+                  download="Smriti-Dahal-PSW-Resume.pdf"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download Resume PDF Directly</span>
+                </a>
               </div>
-            ))}
-          </div>
+            </iframe>
+          </object>
+        </div>
 
-          {/* Education */}
-          <div className="space-y-3">
-            <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Education</div>
-            {education.map((edu, idx) => (
-              <div key={idx} className="space-y-0.5 border-l-2 border-slate-800 pl-3">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-white">
-                  <span>{edu.program} — {edu.institution}</span>
-                  <span className="text-slate-400 text-[11px]">{edu.period}</span>
-                </div>
-                {edu.honors && <div className="text-amber-300 text-[10px]">★ {edu.honors}</div>}
-              </div>
-            ))}
-          </div>
-
-          {/* Certificates */}
-          <div className="space-y-2">
-            <div className="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">Certificates & Clearances</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {certificates.map((cert, idx) => (
-                <div key={idx} className="p-2 rounded bg-slate-950/70 border border-slate-800 text-[11px]">
-                  <div className="font-bold text-white">{cert.title}</div>
-                  <div className="text-slate-400 text-[10px]">{cert.issuer} {cert.certNumber ? `(${cert.certNumber})` : ''}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        {/* Bottom Status Strip */}
+        <div className="px-5 py-2.5 border-t border-slate-800 bg-[#070b13] flex items-center justify-between text-[11px] text-slate-400">
+          <span className="flex items-center gap-1.5 text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Verified 2-Page Document</span>
+          </span>
+          <span className="text-slate-500 font-mono">
+            Sir Sandford Fleming College • Victoria Manor LTC
+          </span>
         </div>
 
       </div>

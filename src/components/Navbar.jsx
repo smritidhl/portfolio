@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { personalInfo } from "../data/portfolioData";
-import { FileText } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 
 export default function Navbar({ onOpenResume }) {
   const handleScrollToTop = (e) => {
@@ -47,14 +47,27 @@ export default function Navbar({ onOpenResume }) {
           <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
         </div>
 
-        {/* Resume Modal Trigger */}
-        <button
-          onClick={onOpenResume}
-          className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-white transition-all flex items-center gap-2 text-xs font-semibold group cursor-pointer"
-        >
-          <FileText className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-          <span>View Resume</span>
-        </button>
+        {/* Resume Actions */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onOpenResume}
+            className="hidden sm:flex px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-white transition-all items-center gap-1.5 text-xs font-semibold cursor-pointer"
+          >
+            <FileText className="w-3.5 h-3.5 text-slate-400" />
+            <span>Preview</span>
+          </button>
+
+          <a
+            href="/assets/Smriti-Dahal-PSW-Resume.pdf"
+            download="Smriti-Dahal-PSW-Resume.pdf"
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white transition-all flex items-center gap-1.5 text-xs font-bold shadow-md shadow-emerald-950/40 cursor-pointer"
+            title="Download Official 2-Page Resume PDF"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Download CV</span>
+          </a>
+        </div>
       </div>
     </nav>
   );
